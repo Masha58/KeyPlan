@@ -6,12 +6,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>455</height>
+    <width>924</width>
+    <height>631</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>mainwindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+	border-image: url(images/mainwindow/fond.jpg)  0 0 0 0 stretch stretch;
+}
+
+QToolBar {
+    background: rgba(65,65,65,0.6);
+    spacing: 10px; /* spacing between items in the tool bar */
+	border-bottom:2px solid rgb(245,245,250);
+	padding : 1px;
+}
+
+</string>
   </property>
   <widget class="QWidget" name="centralWidget"/>
   <widget class="QMenuBar" name="menuBar">
@@ -19,7 +33,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>600</width>
+     <width>924</width>
      <height>22</height>
     </rect>
    </property>
@@ -42,22 +56,22 @@
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <property name="orientation">
-    <enum>Qt::Horizontal</enum>
+    <enum>Qt::Vertical</enum>
    </property>
    <property name="iconSize">
     <size>
-     <width>50</width>
-     <height>50</height>
+     <width>47</width>
+     <height>47</height>
     </size>
    </property>
    <property name="toolButtonStyle">
     <enum>Qt::ToolButtonIconOnly</enum>
    </property>
    <property name="floatable">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
+    <enum>LeftToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
     <bool>false</bool>
