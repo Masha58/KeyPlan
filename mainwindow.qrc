@@ -1,4 +1,5 @@
 <RCC>
-    <qresource prefix="mainwindow">
-    </qresource>
+  <qresource prefix="mainwindow">
+    <file>newTask.png</file>
+  </qresource>
 </RCC>
