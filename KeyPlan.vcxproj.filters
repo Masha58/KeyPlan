@@ -44,12 +44,12 @@
     <QtUic Include="dashboard.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="projet.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="projet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="plugin.cpp">
@@ -65,6 +65,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="dashboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="projet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -107,9 +110,6 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="projet.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="plugin.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -120,6 +120,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="dashboard.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="projet.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

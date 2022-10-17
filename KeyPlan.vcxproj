@@ -96,6 +96,7 @@
     <ClCompile Include="main.cpp" />
     <None Include="KeyPlan.ico" />
     <QtUic Include="projectmanagement.ui" />
+    <QtUic Include="projet.ui" />
     <ResourceCompile Include="KeyPlan.rc" />
   </ItemGroup>
   <ItemGroup>
@@ -113,9 +114,6 @@
     <Image Include="images\projectmanagement\detail.png" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="projet.h" />
-  </ItemGroup>
-  <ItemGroup>
     <QtMoc Include="plugin.h" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +122,7 @@
   <ItemGroup>
     <QtMoc Include="projectmanagement.h" />
     <QtMoc Include="dashboard.h" />
+    <QtMoc Include="projet.h" />
     <ClInclude Include="tache.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

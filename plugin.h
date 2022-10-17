@@ -8,7 +8,7 @@ class Plugin : public Projet
 	Q_OBJECT
 
 public:
-	Plugin(QString, QString, QString);
+	Plugin(int, QString, QString, QString);
 	~Plugin();
 
 private:
