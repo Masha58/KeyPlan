@@ -38,6 +38,12 @@
     <ResourceCompile Include="KeyPlan.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+    <QtUic Include="projectmanagement.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="dashboard.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -53,6 +59,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="tache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="projectmanagement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dashboard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -78,6 +90,21 @@
     <Image Include="images\mainwindow\user.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="images\mainwindow\arrow-down.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\mainwindow\logout.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\mainwindow\logout_black.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\mainwindow\trois-points_hover.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\projectmanagement\detail.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="projet.h">
@@ -87,6 +114,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="logiciel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="projectmanagement.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="dashboard.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

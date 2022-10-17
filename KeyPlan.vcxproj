@@ -83,25 +83,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="dashboard.cpp" />
     <ClCompile Include="logiciel.cpp" />
     <ClCompile Include="plugin.cpp" />
+    <ClCompile Include="projectmanagement.cpp" />
     <ClCompile Include="projet.cpp" />
     <ClCompile Include="tache.cpp" />
+    <QtUic Include="dashboard.ui" />
     <QtUic Include="mainwindow.ui" />
     <QtMoc Include="mainwindow.h" />
     <ClCompile Include="mainwindow.cpp" />
     <ClCompile Include="main.cpp" />
     <None Include="KeyPlan.ico" />
+    <QtUic Include="projectmanagement.ui" />
     <ResourceCompile Include="KeyPlan.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="images\mainwindow\arrow-down.png" />
     <Image Include="images\mainwindow\fond.jpg" />
     <Image Include="images\mainwindow\importer.png" />
+    <Image Include="images\mainwindow\logout.png" />
+    <Image Include="images\mainwindow\logout_black.png" />
     <Image Include="images\mainwindow\logo_menu.png" />
     <Image Include="images\mainwindow\newTask.png" />
     <Image Include="images\mainwindow\plus.png" />
     <Image Include="images\mainwindow\trois-points.png" />
+    <Image Include="images\mainwindow\trois-points_hover.png" />
     <Image Include="images\mainwindow\user.png" />
+    <Image Include="images\projectmanagement\detail.png" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="projet.h" />
@@ -113,6 +122,8 @@
     <QtMoc Include="logiciel.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="projectmanagement.h" />
+    <QtMoc Include="dashboard.h" />
     <ClInclude Include="tache.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
