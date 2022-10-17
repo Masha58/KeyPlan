@@ -6,25 +6,33 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>840</width>
-    <height>532</height>
+    <width>928</width>
+    <height>608</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>mainwindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow{
+   <string notr="true">*{
+	font: 11pt &quot;Calibri&quot;;
+}
+
+QMainWindow{
 	border-image: url(images/mainwindow/fond.jpg)  0 0 0 0 stretch stretch;
 }
 
+QToolButton#tb_todo, #tb_doing, #tb_done
+{
+background: rgba(178, 234, 255,0);
+image:url(images/mainwindow/trois-points.png);
+}
+
 QToolBar {
-	padding-top:5px;
+padding:12px;
     background: rgba(65,65,65,0.6);
-    spacing: 20px; /* spacing between items in the tool bar */
+    spacing: 18px; /* spacing between items in the tool bar */
 	border-bottom:2px solid rgb(245,245,250);
-padding-left:5px;
-padding-right:5px;
 }
 
 #fr_menu_haut
@@ -199,14 +207,14 @@ QPushButton
              <item>
               <widget class="QLabel" name="label">
                <property name="text">
-                <string>To Do</string>
+                <string>TO DO</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QToolButton" name="toolButton">
+              <widget class="QToolButton" name="tb_todo">
                <property name="text">
-                <string>...</string>
+                <string/>
                </property>
               </widget>
              </item>
@@ -382,14 +390,14 @@ QPushButton
              <item>
               <widget class="QLabel" name="label_9">
                <property name="text">
-                <string>To Do</string>
+                <string>DOING</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QToolButton" name="toolButton_9">
+              <widget class="QToolButton" name="tb_doing">
                <property name="text">
-                <string>...</string>
+                <string/>
                </property>
               </widget>
              </item>
@@ -543,14 +551,14 @@ QPushButton
              <item>
               <widget class="QLabel" name="label_2">
                <property name="text">
-                <string>To Do</string>
+                <string>DONE</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QToolButton" name="toolButton_2">
+              <widget class="QToolButton" name="tb_done">
                <property name="text">
-                <string>...</string>
+                <string/>
                </property>
               </widget>
              </item>
@@ -669,8 +677,8 @@ QPushButton
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>840</width>
-     <height>22</height>
+     <width>928</width>
+     <height>25</height>
     </rect>
    </property>
    <property name="defaultUp">
@@ -719,8 +727,8 @@ QPushButton
    </property>
    <property name="iconSize">
     <size>
-     <width>40</width>
-     <height>40</height>
+     <width>42</width>
+     <height>42</height>
     </size>
    </property>
    <property name="toolButtonStyle">

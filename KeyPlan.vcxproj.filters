@@ -66,6 +66,18 @@
     <Image Include="images\mainwindow\logo_menu.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="images\mainwindow\fond.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\mainwindow\plus.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\mainwindow\trois-points.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\mainwindow\user.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="projet.h">

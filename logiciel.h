@@ -14,6 +14,4 @@ public:
 private:
 	QString type_logiciel;
 	QString plateforme;
-	
-	std::vector<QString> langages;
 };

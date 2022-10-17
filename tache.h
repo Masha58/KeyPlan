@@ -4,7 +4,7 @@
 class Tache : public Projet
 {
 private:
-	QString annexe;
+	QString type_tache;
 public:
 	Tache(QString, QString, QString);
 	~Tache();
