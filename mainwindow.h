@@ -2,6 +2,8 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_mainwindow.h"
+#include "projet.h"
+#include "plugin.h"
 
 class mainwindow : public QMainWindow
 {
@@ -13,4 +15,6 @@ public:
 
 private:
     Ui::mainwindowClass ui;
+
+    std::vector<Projet*> tab_projets;
 };

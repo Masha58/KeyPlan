@@ -43,6 +43,18 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="projet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="plugin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="logiciel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="images\mainwindow\importer.png">
@@ -51,5 +63,24 @@
     <Image Include="images\mainwindow\newTask.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="images\mainwindow\logo_menu.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="projet.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="plugin.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="logiciel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="tache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -83,6 +83,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="logiciel.cpp" />
+    <ClCompile Include="plugin.cpp" />
+    <ClCompile Include="projet.cpp" />
+    <ClCompile Include="tache.cpp" />
     <QtUic Include="mainwindow.ui" />
     <QtMoc Include="mainwindow.h" />
     <ClCompile Include="mainwindow.cpp" />
@@ -92,7 +96,20 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="images\mainwindow\importer.png" />
+    <Image Include="images\mainwindow\logo_menu.png" />
     <Image Include="images\mainwindow\newTask.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="projet.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="plugin.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="logiciel.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="tache.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
