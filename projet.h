@@ -1,7 +1,12 @@
 #pragma once
 
 #include <QWidget>
+#include <QtGui>
+#include <QtCore>
+
 #include "ui_projet.h"
+
+enum MoveDirection { MoveUp, MoveDown };
 
 class Projet : public QWidget
 {
@@ -11,7 +16,10 @@ public:
 	Projet(int, QString, QString, QString, QString);
 	~Projet();
 
+
 	int getStatut() { return statut; }
+	bool IsMinimumDistanceRiched(QMouseEvent*);
+	bool moveInLayout(QWidget* widget, MoveDirection direction);
 
 protected:
 	Ui::ProjetClass ui;
@@ -21,4 +29,16 @@ protected:
 	QString nom_client;
 	QString description;
 	QString commentaire;
+
+	double oldX;
+	double oldY;
+	double mouseClickY;
+	double mouseClickX;
+	QPoint dragStartPosition;
+
+public slots:
+	void mouseMoveEvent(QMouseEvent*);
+	void mousePressEvent(QMouseEvent*);
+	void mouseReleaseEvent(QMouseEvent*);
+	void paintEvent(QPaintEvent*);
 };

@@ -30,7 +30,7 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>6.2.4_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;widgets;charts</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
@@ -83,6 +83,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="containerProjet.cpp" />
     <ClCompile Include="dashboard.cpp" />
     <ClCompile Include="logiciel.cpp" />
     <ClCompile Include="plugin.cpp" />
@@ -123,6 +124,7 @@
     <QtMoc Include="projectmanagement.h" />
     <QtMoc Include="dashboard.h" />
     <QtMoc Include="projet.h" />
+    <QtMoc Include="containerProjet.h" />
     <ClInclude Include="tache.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

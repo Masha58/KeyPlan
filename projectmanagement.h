@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QWidget>
+#include <iostream>
 #include "ui_projectmanagement.h"
 #include "projet.h"
 #include "plugin.h"
@@ -15,9 +16,12 @@ public:
 	ProjectManagement(QWidget *parent = nullptr);
 	~ProjectManagement();
 
-	void ajout_projet(Projet &);
-
+	
 private:
 	Ui::ProjectManagementClass ui;
 	std::vector<Projet*> tab_projets;
+
+private slots:
+	void ajout_projet_to_do();
+	void ajout_projet(Projet&);
 };
