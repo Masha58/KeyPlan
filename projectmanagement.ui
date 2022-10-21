@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1163</width>
-    <height>736</height>
+    <height>741</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -66,11 +66,11 @@ font-weight:bold;
     <number>20</number>
    </property>
    <item>
-    <layout class="QVBoxLayout" name="vl_todo">
+    <layout class="QVBoxLayout" name="vl_todo" stretch="3,1">
      <item>
       <widget class="QFrame" name="fr_todo">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -116,45 +116,110 @@ font-weight:bold;
          </layout>
         </item>
         <item>
-         <widget class="QScrollArea" name="sa_todo">
+         <layout class="QVBoxLayout" name="vl_area_todo"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="b_newtask_to_do">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
-          <property name="acceptDrops">
-           <bool>true</bool>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="styleSheet">
-           <string notr="true">QScrollArea
-{
-border:none;
-background:rgba(0,0,0,0);
-}</string>
+           <string notr="true"/>
           </property>
-          <property name="widgetResizable">
+          <property name="text">
+           <string>Add new task</string>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>images/mainwindow/plus.png</normaloff>images/mainwindow/plus.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="flat">
            <bool>true</bool>
           </property>
-          <widget class="QWidget" name="sa_la_todo">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>344</width>
-             <height>242</height>
-            </rect>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_15">
-            <item>
-             <layout class="QVBoxLayout" name="vl_todo_projet"/>
-            </item>
-           </layout>
-          </widget>
          </widget>
         </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::MinimumExpanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="vl_doing" stretch="3,1">
+     <item>
+      <widget class="QFrame" name="fr_doing">
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="acceptDrops">
+        <bool>false</bool>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_9" stretch="0,1,0">
+        <property name="spacing">
+         <number>20</number>
+        </property>
         <item>
-         <widget class="QPushButton" name="b_newtask_to_do">
+         <layout class="QHBoxLayout" name="hl_doing">
+          <item>
+           <widget class="QLabel" name="la_doing">
+            <property name="text">
+             <string>DOING</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="tb_doing">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="vl_area_doing"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="b_newtask_doing">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
             <horstretch>0</horstretch>
@@ -204,133 +269,7 @@ background:rgba(0,0,0,0);
     </layout>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="vl_doing">
-     <item>
-      <widget class="QFrame" name="fr_doing">
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="acceptDrops">
-        <bool>false</bool>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_9" stretch="0,0,0">
-        <property name="spacing">
-         <number>20</number>
-        </property>
-        <item>
-         <layout class="QHBoxLayout" name="hl_doing">
-          <item>
-           <widget class="QLabel" name="la_doing">
-            <property name="text">
-             <string>DOING</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QToolButton" name="tb_doing">
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QScrollArea" name="sa_doing">
-          <property name="acceptDrops">
-           <bool>true</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QScrollArea
-{
-border:none;
-background:rgba(0,0,0,0);
-}</string>
-          </property>
-          <property name="widgetResizable">
-           <bool>true</bool>
-          </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents_3">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>345</width>
-             <height>242</height>
-            </rect>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_16">
-            <item>
-             <layout class="QVBoxLayout" name="vl_doing_projet"/>
-            </item>
-           </layout>
-          </widget>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="b_newtask_doing">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>Add new task</string>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>images/mainwindow/plus.png</normaloff>images/mainwindow/plus.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>20</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <spacer name="verticalSpacer_5">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QVBoxLayout" name="vl_done">
+    <layout class="QVBoxLayout" name="vl_done" stretch="3,1">
      <item>
       <widget class="QFrame" name="fr_done">
        <property name="sizePolicy">
@@ -354,7 +293,7 @@ background:rgba(0,0,0,0);
        <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0">
+       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1,0">
         <property name="spacing">
          <number>20</number>
         </property>
@@ -380,36 +319,7 @@ background:rgba(0,0,0,0);
          </layout>
         </item>
         <item>
-         <widget class="QScrollArea" name="sa_doing_2">
-          <property name="acceptDrops">
-           <bool>true</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QScrollArea
-{
-border:none;
-background:rgba(0,0,0,0);
-}</string>
-          </property>
-          <property name="widgetResizable">
-           <bool>true</bool>
-          </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents_4">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>344</width>
-             <height>242</height>
-            </rect>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_18">
-            <item>
-             <layout class="QVBoxLayout" name="vl_done_projet"/>
-            </item>
-           </layout>
-          </widget>
-         </widget>
+         <layout class="QVBoxLayout" name="vl_area_done"/>
         </item>
         <item>
          <widget class="QPushButton" name="b_newtask_done">
@@ -447,7 +357,7 @@ background:rgba(0,0,0,0);
       </widget>
      </item>
      <item>
-      <spacer name="verticalSpacer_6">
+      <spacer name="verticalSpacer_2">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
