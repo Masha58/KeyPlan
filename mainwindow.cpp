@@ -16,17 +16,11 @@ mainwindow::mainwindow(QWidget *parent): QMainWindow(parent)
     mainStackedlayout->addWidget(dashboard);
     mainStackedlayout->setCurrentIndex(0);
 
-    tab_projets.push_back(new Plugin("test", "test", "test"));
-
     QComboBox::connect(ui.cb_menu, SIGNAL(currentIndexChanged(int)), this, SLOT(change_fenetre(int)));
 }
 
 mainwindow::~mainwindow()
 {
-    for (unsigned int i = 0; i < tab_projets.size(); i++)
-    {
-        delete tab_projets[i];
-    }
     delete projectmanagement;
 }
 

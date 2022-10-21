@@ -29,8 +29,8 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtInstall>6.4.0_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtInstall>6.2.4_msvc2019_64</QtInstall>
+    <QtModules>core;gui;widgets;charts</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
@@ -83,6 +83,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="containerProjet.cpp" />
     <ClCompile Include="dashboard.cpp" />
     <ClCompile Include="logiciel.cpp" />
     <ClCompile Include="plugin.cpp" />
@@ -96,6 +97,7 @@
     <ClCompile Include="main.cpp" />
     <None Include="KeyPlan.ico" />
     <QtUic Include="projectmanagement.ui" />
+    <QtUic Include="projet.ui" />
     <ResourceCompile Include="KeyPlan.rc" />
   </ItemGroup>
   <ItemGroup>
@@ -113,9 +115,6 @@
     <Image Include="images\projectmanagement\detail.png" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="projet.h" />
-  </ItemGroup>
-  <ItemGroup>
     <QtMoc Include="plugin.h" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +123,8 @@
   <ItemGroup>
     <QtMoc Include="projectmanagement.h" />
     <QtMoc Include="dashboard.h" />
+    <QtMoc Include="projet.h" />
+    <QtMoc Include="containerProjet.h" />
     <ClInclude Include="tache.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

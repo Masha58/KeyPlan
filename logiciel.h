@@ -8,7 +8,7 @@ class Logiciel  : public Projet
 	Q_OBJECT
 
 public:
-	Logiciel(QString, QString, QString);
+	Logiciel(int, QString, QString, QString);
 	~Logiciel();
 
 private:
