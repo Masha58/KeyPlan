@@ -28,7 +28,7 @@ private:
 
 private slots:
 	void ajout_projet_to_do();
-	//void ajout_projet_doing();
-	//void ajout_projet_done();
+	void ajout_projet_doing();
+	void ajout_projet_done();
 	void ajout_projet(Projet&);
 };

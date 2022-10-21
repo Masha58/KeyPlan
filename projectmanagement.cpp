@@ -22,22 +22,17 @@ ProjectManagement::ProjectManagement(QWidget *parent)
 	Logiciel* logiciel1 = new Logiciel(1, "test", "test", "test");
 	Logiciel* logiciel2 = new Logiciel(2, "test", "test", "test");
 
-	Tache* tache1 = new Tache(1, "test", "test", "test");
-	Tache* tache2 = new Tache(2, "test", "test", "test");
-
-	ajout_projet(*tache2);
 	ajout_projet(*logiciel);
 	ajout_projet(*plugin);
 	ajout_projet(*plugin1);
-	ajout_projet(*tache1);
 	ajout_projet(*plugin2);
 	
 	ajout_projet(*logiciel1);
 	ajout_projet(*logiciel2);
 
 	QPushButton::connect(ui.b_newtask_to_do, SIGNAL(clicked()), this, SLOT(ajout_projet_to_do()));
-	//QPushButton::connect(ui.b_newtask_doing, SIGNAL(clicked()), this, SLOT(ajout_projet_doing()));
-	//QPushButton::connect(ui.b_newtask_done, SIGNAL(clicked()), this, SLOT(ajout_projet_done()));
+	QPushButton::connect(ui.b_newtask_doing, SIGNAL(clicked()), this, SLOT(ajout_projet_doing()));
+	QPushButton::connect(ui.b_newtask_done, SIGNAL(clicked()), this, SLOT(ajout_projet_done()));
 }
 
 ProjectManagement::~ProjectManagement()
@@ -50,8 +45,19 @@ ProjectManagement::~ProjectManagement()
 
 void ProjectManagement::ajout_projet_to_do()
 {
-	std::cout << "statut_";
 	Tache* tache = new Tache(0, "test", "test", "test");
+	ajout_projet(*tache);
+}
+
+void ProjectManagement::ajout_projet_doing()
+{
+	Tache* tache = new Tache(1, "test", "test", "test");
+	ajout_projet(*tache);
+}
+
+void ProjectManagement::ajout_projet_done()
+{
+	Tache* tache = new Tache(2, "test", "test", "test");
 	ajout_projet(*tache);
 }
 
@@ -69,4 +75,3 @@ void ProjectManagement::ajout_projet(Projet& projet)
 	tab_projets.push_back(&projet);
 }
 
-//void ajout_projet_doing()
