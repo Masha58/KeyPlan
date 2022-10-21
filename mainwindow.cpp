@@ -17,6 +17,7 @@ mainwindow::mainwindow(QWidget *parent): QMainWindow(parent)
     mainStackedlayout->setCurrentIndex(0);
 
     QComboBox::connect(ui.cb_menu, SIGNAL(currentIndexChanged(int)), this, SLOT(change_fenetre(int)));
+
 }
 
 mainwindow::~mainwindow()

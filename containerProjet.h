@@ -4,16 +4,21 @@
 #include <QtGui>
 #include <QtCore>
 #include <QScrollArea>
-#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include "plugin.h"
+#include "projet.h"
 
 class ContainerProjet : public QScrollArea
 {
 	Q_OBJECT
 private:
-	//QHBoxLayout* hboxLayout;
+	
+	QWidget* scrollAreaWidgetContents;
 public:
 	ContainerProjet();
 	~ContainerProjet();
+	QVBoxLayout* vboxLayout = nullptr;
+	
 
 private slots:
 	void dragEnterEvent(QDragEnterEvent*);
