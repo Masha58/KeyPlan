@@ -21,12 +21,17 @@ public:
 	LineEdit* lineEdit_nom_client;
 
 	int getStatut() { return statut; }
+	int getToken() { return token; }
+	QFrame& getFrameDetails() { return *ui.fr_annexe; }
+	QFrame& getFrameProjet() { return *ui.fr_projet; }
 	QString getNom_projet() { return nom_projet; }
 	bool IsMinimumDistanceRiched(QMouseEvent*);
 	bool moveInLayout(QWidget* widget, MoveDirection direction);
+	void setToken(int newtoken) { token = newtoken; }
 
 protected:
 	
+	// bdd
 	int statut; // 0 -> to do ; 1 -> doing ; 2 -> done ; (3 -> )
 	QString nom_projet;
 	QString type_projet;
@@ -34,6 +39,8 @@ protected:
 	QString description;
 	QString commentaire;
 
+	// autre
+	int token;
 	double oldX;
 	double oldY;
 	double mouseClickY;

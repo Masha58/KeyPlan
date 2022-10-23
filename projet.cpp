@@ -9,8 +9,7 @@ Projet::Projet()
 {
     ui.setupUi(this);
     
-    commentaire = "";
-
+    token = 0;
     statut = 0;
     type_projet = "Undefined";
     nom_projet = "New Project";
@@ -22,9 +21,12 @@ Projet::Projet()
     lineEdit_nom_client = new LineEdit(nom_client, "rgb(90, 90, 90)");
 
     ui.la_tag_projet->setText(type_projet);
-
     ui.vl_titre->addWidget(lineEdit_titre);
     ui.hl_nom_client->addWidget(lineEdit_nom_client);
+    ui.fr_annexe->setVisible(false);
+
+    ui.fr_projet->setMinimumSize(50, 120);
+    ui.fr_projet->setMaximumSize(500, 120);
 }
 
 Projet::Projet(int statut, QString type_projet, QString nom_projet, QString nom_client, QString description) :
@@ -32,6 +34,7 @@ Projet::Projet(int statut, QString type_projet, QString nom_projet, QString nom_
 {
 	ui.setupUi(this);
 	commentaire = "";
+    token = 0;
 
 	if (type_projet == "Application")
 		ui.la_tag_projet->setStyleSheet("background-color: rgb(0, 188, 213);color:white;border-radius:3px;");
@@ -47,6 +50,9 @@ Projet::Projet(int statut, QString type_projet, QString nom_projet, QString nom_
     lineEdit_nom_client = new LineEdit(nom_client, "rgb(90, 90, 90)");
     ui.hl_nom_client->addWidget(lineEdit_nom_client);
     ui.vl_titre->addWidget(lineEdit_titre);
+    ui.fr_annexe->setVisible(false);
+    ui.fr_projet->setMaximumSize(500, 120);
+
 
 }
 

@@ -33,4 +33,5 @@ private:
 private slots:
 	void ajout_projet(QVBoxLayout&);
 	void supprimer_projet(QString);
+	void afficher_details(QString);
 };

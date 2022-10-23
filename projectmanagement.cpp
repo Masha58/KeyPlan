@@ -44,7 +44,8 @@ void ProjectManagement::ajout_projet(QVBoxLayout& layout)
 			layout.addWidget(project);
 			tab_projets.push_back(project);
 			QPushButton::connect(project->ui.b_supprimer, &QPushButton::clicked, project, [this, project]() { supprimer_projet(project->getNom_projet()); });
-
+			QPushButton::connect(project->ui.b_detail, &QPushButton::clicked, project, [this, project]() { afficher_details(project->getNom_projet()); });
+		
 		}
 		else if (menu->getValueComboBox() == "Application")
 		{
@@ -52,7 +53,8 @@ void ProjectManagement::ajout_projet(QVBoxLayout& layout)
 			layout.addWidget(project);
 			tab_projets.push_back(project);
 			QPushButton::connect(project->ui.b_supprimer, &QPushButton::clicked, project, [this, project]() { supprimer_projet(project->getNom_projet()); });
-
+			QPushButton::connect(project->ui.b_detail, &QPushButton::clicked, project, [this, project]() { afficher_details(project->getNom_projet()); });
+		
 		}
 		else if (menu->getValueComboBox() == "Task")
 		{
@@ -60,7 +62,8 @@ void ProjectManagement::ajout_projet(QVBoxLayout& layout)
 			layout.addWidget(project);
 			tab_projets.push_back(project);
 			QPushButton::connect(project->ui.b_supprimer, &QPushButton::clicked, project, [this, project]() { supprimer_projet(project->getNom_projet()); });
-
+			QPushButton::connect(project->ui.b_detail, &QPushButton::clicked, project, [this, project]() { afficher_details(project->getNom_projet()); });
+		
 		}
 		else
 		{
@@ -68,6 +71,7 @@ void ProjectManagement::ajout_projet(QVBoxLayout& layout)
 			layout.addWidget(project);
 			tab_projets.push_back(project);
 			QPushButton::connect(project->ui.b_supprimer, &QPushButton::clicked, project, [this, project]() { supprimer_projet(project->getNom_projet()); });
+			QPushButton::connect(project->ui.b_detail, &QPushButton::clicked, project, [this, project]() { afficher_details(project->getNom_projet()); });
 
 		}
 		compteur++;
@@ -91,4 +95,32 @@ void ProjectManagement::supprimer_projet(QString nom_projet)
 	tab_projets[position]->setVisible(false);
 	tab_projets.erase(tab_projets.begin() + position);
 
+}
+
+void ProjectManagement::afficher_details(QString nom_projet)
+{
+	int position = 0;
+	for (unsigned int i = 0; i < tab_projets.size(); i++)
+	{
+		if (tab_projets[i]->getNom_projet() == nom_projet)
+		{
+			position = i;
+			break;
+		}
+	}
+
+	if (tab_projets[position]->getToken())
+	{
+		tab_projets[position]->setToken(0);
+		tab_projets[position]->getFrameDetails().setVisible(false);
+		tab_projets[position]->getFrameProjet().setMinimumSize(50, 120);
+		tab_projets[position]->getFrameProjet().setMaximumSize(500, 120);
+	}
+	else
+	{
+		tab_projets[position]->setToken(1);
+		tab_projets[position]->getFrameDetails().setVisible(true);
+		tab_projets[position]->getFrameProjet().setMinimumSize(50, 300);
+		tab_projets[position]->getFrameProjet().setMaximumSize(500, 300);
+	}
 }

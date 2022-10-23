@@ -8,7 +8,7 @@ ContainerProjet::ContainerProjet()
 	scrollAreaWidgetContents->setStyleSheet(ssheet_back);
 
 	vboxLayout = new QVBoxLayout(scrollAreaWidgetContents);
-	vboxLayout->setSpacing(4);
+	vboxLayout->setSpacing(8);
 	vboxLayout->setContentsMargins(4, 4, 4, 4);
 
 	setAcceptDrops(true);
