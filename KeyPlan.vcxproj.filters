@@ -76,6 +76,9 @@
     <ClCompile Include="menuselector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="lineEdit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="images\mainwindow\importer.png">
@@ -140,6 +143,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lineEdit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -40,7 +40,7 @@ void ProjectManagement::ajout_projet(QVBoxLayout& layout)
 	{
 		if (menu->getValueComboBox() == "Plugin")
 		{
-			Plugin* project = new Plugin(0, "Titre " + QString::number(compteur), "Undefined", "Undefined");
+			Plugin* project = new Plugin(0, "Titre " + QString::number(compteur), "Nom client", "Undefined");
 			layout.addWidget(project);
 			tab_projets.push_back(project);
 			QPushButton::connect(project->ui.b_supprimer, &QPushButton::clicked, project, [this, project]() { supprimer_projet(project->getNom_projet()); });
@@ -48,7 +48,7 @@ void ProjectManagement::ajout_projet(QVBoxLayout& layout)
 		}
 		else if (menu->getValueComboBox() == "Application")
 		{
-			Logiciel* project = new Logiciel(0, "Titre " + QString::number(compteur), "Undefined", "Undefined");
+			Logiciel* project = new Logiciel(0, "Titre " + QString::number(compteur), "Nom client", "Undefined");
 			layout.addWidget(project);
 			tab_projets.push_back(project);
 			QPushButton::connect(project->ui.b_supprimer, &QPushButton::clicked, project, [this, project]() { supprimer_projet(project->getNom_projet()); });
@@ -56,7 +56,7 @@ void ProjectManagement::ajout_projet(QVBoxLayout& layout)
 		}
 		else if (menu->getValueComboBox() == "Task")
 		{
-			Tache* project = new Tache(0, "Titre " + QString::number(compteur), "Undefined", "Undefined");
+			Tache* project = new Tache(0, "Titre " + QString::number(compteur), "Nom client", "Undefined");
 			layout.addWidget(project);
 			tab_projets.push_back(project);
 			QPushButton::connect(project->ui.b_supprimer, &QPushButton::clicked, project, [this, project]() { supprimer_projet(project->getNom_projet()); });

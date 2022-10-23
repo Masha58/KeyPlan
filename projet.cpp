@@ -1,21 +1,30 @@
 #include "projet.h"
 #include <QComboBox>
 
+QString color_app = "";
+QString color_plugin = "";
+QString color_task = "";
+
 Projet::Projet()
 {
     ui.setupUi(this);
+    
     commentaire = "";
 
     statut = 0;
     type_projet = "Undefined";
     nom_projet = "New Project";
-    nom_client = "Undefined";
+    nom_client = "Nom client";
     description = "";
     commentaire = "";
 
-    ui.la_titre_projet->setText(nom_projet);
+    lineEdit_titre = new LineEdit(nom_projet, "black");
+    lineEdit_nom_client = new LineEdit(nom_client, "rgb(90, 90, 90)");
+
     ui.la_tag_projet->setText(type_projet);
-    ui.la_nom_client->setText(nom_client);
+
+    ui.vl_titre->addWidget(lineEdit_titre);
+    ui.hl_nom_client->addWidget(lineEdit_nom_client);
 }
 
 Projet::Projet(int statut, QString type_projet, QString nom_projet, QString nom_client, QString description) :
@@ -31,16 +40,20 @@ Projet::Projet(int statut, QString type_projet, QString nom_projet, QString nom_
 	else if(type_projet == "Plugin")
 		ui.la_tag_projet->setStyleSheet("background-color: rgb(84, 229, 154);color:white;border-radius:3px;");
 		
-	ui.la_titre_projet->setText(nom_projet);
 	ui.la_tag_projet->setText(type_projet);
-	ui.la_nom_client->setText(nom_client);
-    
+
+
+    lineEdit_titre = new LineEdit(nom_projet, "black");
+    lineEdit_nom_client = new LineEdit(nom_client, "rgb(90, 90, 90)");
+    ui.hl_nom_client->addWidget(lineEdit_nom_client);
+    ui.vl_titre->addWidget(lineEdit_titre);
 
 }
 
 Projet::~Projet()
 {
     delete mimeData;
+    delete lineEdit_titre;
 }
 
 void Projet::mouseMoveEvent(QMouseEvent* event)

@@ -3,8 +3,8 @@
 #include <QWidget>
 #include <QtGui>
 #include <QtCore>
-
 #include "ui_projet.h"
+#include "lineEdit.h"
 
 enum MoveDirection { MoveUp, MoveDown };
 
@@ -17,6 +17,8 @@ public:
 	Projet(int, QString, QString, QString, QString);
 	~Projet();
 	Ui::ProjetClass ui;
+	LineEdit* lineEdit_titre;
+	LineEdit* lineEdit_nom_client;
 
 	int getStatut() { return statut; }
 	QString getNom_projet() { return nom_projet; }
