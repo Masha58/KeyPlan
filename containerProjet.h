@@ -23,5 +23,6 @@ public:
 private slots:
 	void dragEnterEvent(QDragEnterEvent*);
 	void dropEvent(QDropEvent*);
+
 };
 

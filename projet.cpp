@@ -1,17 +1,34 @@
 #include "projet.h"
 #include <QComboBox>
 
+Projet::Projet()
+{
+    ui.setupUi(this);
+    commentaire = "";
+
+    statut = 0;
+    type_projet = "Undefined";
+    nom_projet = "New Project";
+    nom_client = "Undefined";
+    description = "";
+    commentaire = "";
+
+    ui.la_titre_projet->setText(nom_projet);
+    ui.la_tag_projet->setText(type_projet);
+    ui.la_nom_client->setText(nom_client);
+}
+
 Projet::Projet(int statut, QString type_projet, QString nom_projet, QString nom_client, QString description) :
 	statut(statut),type_projet(type_projet), nom_projet(nom_projet), nom_client(nom_client), description(description)
 {
 	ui.setupUi(this);
 	commentaire = "";
 
-	if (type_projet == "logiciel")
+	if (type_projet == "Application")
 		ui.la_tag_projet->setStyleSheet("background-color: rgb(0, 188, 213);color:white;border-radius:3px;");
-	else if(type_projet == "tache")
+	else if(type_projet == "Task")
 		ui.la_tag_projet->setStyleSheet("background-color: rgb(253, 161, 21);color:white;border-radius:3px;");
-	else if(type_projet == "plugin")
+	else if(type_projet == "Plugin")
 		ui.la_tag_projet->setStyleSheet("background-color: rgb(84, 229, 154);color:white;border-radius:3px;");
 		
 	ui.la_titre_projet->setText(nom_projet);
@@ -22,12 +39,14 @@ Projet::Projet(int statut, QString type_projet, QString nom_projet, QString nom_
 }
 
 Projet::~Projet()
-{}
+{
+    delete mimeData;
+}
 
 void Projet::mouseMoveEvent(QMouseEvent* event)
 {
 
-    QMimeData* mimeData = new QMimeData();
+    mimeData = new QMimeData();
     QPixmap dragPixmap = grab();
 
     QDrag *drag = new QDrag(this);
@@ -35,30 +54,15 @@ void Projet::mouseMoveEvent(QMouseEvent* event)
     drag->setPixmap(dragPixmap);
     drag->setHotSpot(event->pos());
 
-    //setParent(nan);
-
-    //drag->exec(Qt::MoveAction);
-
-
-    if (!(event->buttons() & Qt::LeftButton))
-        return;
-    if (!IsMinimumDistanceRiched(event))
-    {
-        return;
-    }
-    int y = event->globalY() - mouseClickY + oldY;
-    int BottomBorder = parentWidget()->geometry().height() - this->geometry().height();
-    if (y < 0) y = 0;
-    else if (y > BottomBorder) y = BottomBorder;
-    move(oldX, y);
+    drag->exec(Qt::MoveAction);
 }
 
 void Projet::mousePressEvent(QMouseEvent* event)
 {
     if (event->buttons() & Qt::LeftButton)
         dragStartPosition = event->pos();
-    oldX = this->geometry().x();
-    oldY = this->geometry().y();
+    oldX = geometry().x();
+    oldY = geometry().y();
     mouseClickX = event->globalX();
     mouseClickY = event->globalY();
 }

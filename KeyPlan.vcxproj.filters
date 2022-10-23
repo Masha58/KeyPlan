@@ -73,6 +73,9 @@
     <ClCompile Include="containerProjet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="menuselector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="images\mainwindow\importer.png">
@@ -129,6 +132,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="containerProjet.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="menuselector.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

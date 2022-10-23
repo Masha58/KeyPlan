@@ -16,24 +16,18 @@ ContainerProjet::ContainerProjet()
 	vboxLayout->setContentsMargins(4, 4, 4, 4);
 
 	setWidget(scrollAreaWidgetContents);
-
-	vboxLayout->addWidget(new Plugin(0, "test", "test", "test"));
 }
 
 ContainerProjet::~ContainerProjet()
 {
-	delete scrollAreaWidgetContents;
 	delete vboxLayout;
+	delete scrollAreaWidgetContents;
+	
 }
 
 void ContainerProjet::dropEvent(QDropEvent* event)
 {
-
-	if (event->source() != this)
-	{
-		event->source()->setParent(this);
-		layout()->addWidget(qobject_cast<QWidget*>(event->source()));
-	}
+	vboxLayout->addWidget(qobject_cast<QWidget*>(event->source()));
 }
 
 

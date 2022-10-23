@@ -86,6 +86,7 @@
     <ClCompile Include="containerProjet.cpp" />
     <ClCompile Include="dashboard.cpp" />
     <ClCompile Include="logiciel.cpp" />
+    <ClCompile Include="menuselector.cpp" />
     <ClCompile Include="plugin.cpp" />
     <ClCompile Include="projectmanagement.cpp" />
     <ClCompile Include="projet.cpp" />
@@ -125,6 +126,7 @@
     <QtMoc Include="dashboard.h" />
     <QtMoc Include="projet.h" />
     <QtMoc Include="containerProjet.h" />
+    <QtMoc Include="menuselector.h" />
     <ClInclude Include="tache.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -93,7 +93,7 @@ border-radius:5px;</string>
          <widget class="QLabel" name="la_tag_projet">
           <property name="minimumSize">
            <size>
-            <width>70</width>
+            <width>80</width>
             <height>25</height>
            </size>
           </property>
@@ -227,12 +227,41 @@ padding:5px;</string>
             <height>30</height>
            </size>
           </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="text">
            <string/>
           </property>
           <property name="icon">
            <iconset>
             <normaloff>images/projectmanagement/detail.png</normaloff>images/projectmanagement/detail.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="b_supprimer">
+          <property name="minimumSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>images/projectmanagement/bin.png</normaloff>images/projectmanagement/bin.png</iconset>
           </property>
          </widget>
         </item>

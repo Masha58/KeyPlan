@@ -22,11 +22,10 @@ type_tache VARCHAR(200),
 FOREIGN KEY(id_projet) REFERENCES PROJET(id_projet)
 );
 
-
-CREATE TABLE IF NOT EXISTS LOGICIEL(
+CREATE TABLE IF NOT EXISTS APPLICATION(
 id_projet INTEGER NOT NULL PRIMARY KEY,
 type_logiciel VARCHAR(200),
-plateforeme VARCHAR(100),
+plateforme VARCHAR(100),
 FOREIGN KEY(id_projet) REFERENCES PROJET(id_projet)
 );
 
@@ -42,3 +41,8 @@ id_user INTEGER NOT NULL,
 id_projet INTEGER NOT NULL,
 PRIMARY KEY(id_user, id_projet)
 );
+
+
+
+INSERT INTO USER (nom_user, prenom_user, mail_user) VALUES ("Seguin", "Justine", "justineseguin3@gmail.com");
+INSERT INTO USER (nom_user, prenom_user, mail_user) VALUES ("Kalae","Masha", "masha.kalae@gmail.com");

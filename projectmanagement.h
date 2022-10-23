@@ -8,6 +8,7 @@
 #include "logiciel.h"
 #include "tache.h"
 #include "containerProjet.h"
+#include "menuselector.h"
 
 class ProjectManagement : public QWidget
 {
@@ -19,6 +20,7 @@ public:
 
 	
 private:
+	int compteur;
 	Ui::ProjectManagementClass ui;
 	std::vector<Projet*> tab_projets;
 
@@ -26,9 +28,9 @@ private:
 	ContainerProjet *containerprojet_doing;
 	ContainerProjet* containerprojet_done;
 
+	MenuSelector *menu;
+
 private slots:
-	void ajout_projet_to_do();
-	void ajout_projet_doing();
-	void ajout_projet_done();
-	void ajout_projet(Projet&);
+	void ajout_projet(QVBoxLayout&);
+	void supprimer_projet(QString);
 };
