@@ -28,4 +28,13 @@ mainwindow::~mainwindow()
 void mainwindow::change_fenetre(int index)
 {
     mainStackedlayout->setCurrentIndex(index);
+
+    if (index == 0)
+    {
+        projectmanagement->maj_bdd();
+    }
+    else
+    {
+
+    }
 }

@@ -2,6 +2,10 @@
 
 #include <QWidget>
 #include <iostream>
+#include <QSqlDatabase>
+#include <QSqlDriver>
+#include <QSqlError>
+#include <QSqlQuery>
 #include "ui_projectmanagement.h"
 #include "projet.h"
 #include "plugin.h"
@@ -17,10 +21,13 @@ class ProjectManagement : public QWidget
 public:
 	ProjectManagement(QWidget *parent = nullptr);
 	~ProjectManagement();
+	void maj_bdd();
+	void databaseConnect(QSqlDatabase);
+	void addBonLayout(Projet&);
 
-	
 private:
 	int compteur;
+	QSqlDatabase m_db;
 	Ui::ProjectManagementClass ui;
 	std::vector<Projet*> tab_projets;
 

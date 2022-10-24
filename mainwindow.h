@@ -18,14 +18,12 @@ public:
 
 private:
     Ui::mainwindowClass ui;
-    ProjectManagement *projectmanagement;
     Dashboard* dashboard;
-
-    QStackedLayout *mainStackedlayout;
+    QStackedLayout* mainStackedlayout;
+    ProjectManagement *projectmanagement;
 
 private slots:
     void change_fenetre(int);
-    
 };
 
 

@@ -22,6 +22,17 @@ QMainWindow{
 	border-image: url(images/mainwindow/fond.jpg)  0 0 0 0 stretch stretch;
 }
 
+QMenuBar, QMenu
+{
+background: rgba(65,65,65,0.85);
+color:white;
+}
+
+QMenuBar::item:selected
+{
+background: rgba(65,65,65,0.95);
+}
+
 /* QFrame */
 
 #fr_menu_haut
@@ -37,6 +48,12 @@ padding:12px;
     spacing: 18px; /* spacing between items in the tool bar */
 	border-bottom:2px solid rgb(245,245,250);
 }
+
+QToolButton:hover {
+background: none; 
+border: none;
+}
+
 
 /* COMBOBOX */
 

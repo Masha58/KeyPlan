@@ -22,9 +22,12 @@ public:
 
 	int getStatut() { return statut; }
 	int getToken() { return token; }
+
+	QString getParentWidget() { return this->parentWidget()->objectName(); }
 	QFrame& getFrameDetails() { return *ui.fr_annexe; }
 	QFrame& getFrameProjet() { return *ui.fr_projet; }
 	QString getNom_projet() { return nom_projet; }
+	QTextEdit& getTe_descriotion() { return *ui.te_description; }
 	bool IsMinimumDistanceRiched(QMouseEvent*);
 	bool moveInLayout(QWidget* widget, MoveDirection direction);
 	void setToken(int newtoken) { token = newtoken; }

@@ -1,11 +1,12 @@
 #include "containerProjet.h"
 
-ContainerProjet::ContainerProjet()
+ContainerProjet::ContainerProjet(int whatsthis)
 {
 	QString ssheet_back = "border:none; background:none; background-color:none;";
 
 	scrollAreaWidgetContents = new QWidget();
 	scrollAreaWidgetContents->setStyleSheet(ssheet_back);
+	scrollAreaWidgetContents->setWhatsThis(QString::number(whatsthis));
 
 	vboxLayout = new QVBoxLayout(scrollAreaWidgetContents);
 	vboxLayout->setSpacing(8);
@@ -18,14 +19,12 @@ ContainerProjet::ContainerProjet()
 	setSizeAdjustPolicy(AdjustToContents);
 	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-
 }
 
 ContainerProjet::~ContainerProjet()
 {
 	delete vboxLayout;
 	delete scrollAreaWidgetContents;
-	
 }
 
 void ContainerProjet::dropEvent(QDropEvent* event)

@@ -46,3 +46,17 @@ PRIMARY KEY(id_user, id_projet)
 
 INSERT INTO USER (nom_user, prenom_user, mail_user) VALUES ("Seguin", "Justine", "justineseguin3@gmail.com");
 INSERT INTO USER (nom_user, prenom_user, mail_user) VALUES ("Kalae","Masha", "masha.kalae@gmail.com");
+
+INSERT INTO PROJET (statut, nom_projet, type_projet, nom_client, description, commentaire) VALUES(0, "Hydrogène", "Application", "Service Hydrogène", "Simulation de centrale Hydrogène", "Première version déployable amorcée");
+INSERT INTO PROJET (statut, nom_projet, type_projet, nom_client, description, commentaire) VALUES(1, "Hydrogène2", "Application", "Service Hydrogène", "Simulation de centrale Hydrogène", "Première version déployable amorcée");
+INSERT INTO PROJET (statut, nom_projet, type_projet, nom_client, description, commentaire) VALUES(2, "Hydrogène3", "Application", "Service Hydrogène", "Simulation de centrale Hydrogène", "Première version déployable amorcée");
+
+INSERT INTO PROJET(statut, nom_projet, type_projet, nom_client, description, commentaire) VALUES(1, "InChart", "Application", "Service BIM", "Logiciel comme PowerBI", "Première version déployable amorcée");
+INSERT INTO PROJET(statut, nom_projet, type_projet, nom_client, description, commentaire) VALUES(0, "Passage Git", "Task", "Justine", "Mettre les derniers logiciels sur Git", "");
+INSERT INTO PROJET(statut, nom_projet, type_projet, nom_client, description, commentaire) VALUES(1, "JavaSript", "Task", "Justine", "Finir cours JS", "");
+
+
+INSERT INTO PROJET(statut, nom_projet, type_projet, nom_client, description, commentaire) VALUES(0, "Test", "Plugin", "Test", "Test", "Test");
+INSERT INTO PROJET(statut, nom_projet, type_projet, nom_client, description, commentaire) VALUES(1, "Test", "Plugin", "Test", "Test", "Test");
+INSERT INTO PROJET(statut, nom_projet, type_projet, nom_client, description, commentaire) VALUES(2, "Test", "Plugin", "Test", "Test", "Test");
+INSERT INTO PROJET(statut, nom_projet, type_projet, nom_client, description, commentaire) VALUES(2, "Test", "Application", "Test", "Test", "Test");

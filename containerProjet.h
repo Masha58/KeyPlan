@@ -15,9 +15,11 @@ private:
 	
 	QWidget* scrollAreaWidgetContents;
 public:
-	ContainerProjet();
+	ContainerProjet(int);
 	~ContainerProjet();
 	QVBoxLayout* vboxLayout = nullptr;
+
+	QWidget& getScrollAreaWidgetContent() { return *scrollAreaWidgetContents; }
 	
 
 private slots:

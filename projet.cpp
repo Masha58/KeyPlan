@@ -58,7 +58,8 @@ Projet::Projet(int statut, QString type_projet, QString nom_projet, QString nom_
 
 Projet::~Projet()
 {
-    delete mimeData;
+    if(mimeData) delete mimeData;
+
     delete lineEdit_titre;
 }
 
