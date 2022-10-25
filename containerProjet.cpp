@@ -3,6 +3,8 @@
 ContainerProjet::ContainerProjet(int whatsthis)
 {
 	QString ssheet_back = "border:none; background:none; background-color:none;";
+	QString ssheet_scroll = "QScrollBar::handle:vertical{background-color: red;min-height:5px;border-radius: 4px;}"
+		"QScrollArea{background-color:none; border:none; background:none;}";
 
 	scrollAreaWidgetContents = new QWidget();
 	scrollAreaWidgetContents->setStyleSheet(ssheet_back);
@@ -14,7 +16,7 @@ ContainerProjet::ContainerProjet(int whatsthis)
 
 	setAcceptDrops(true);
 	setWidgetResizable(true);
-	setStyleSheet(ssheet_back);
+	setStyleSheet(ssheet_scroll);
 	setWidget(scrollAreaWidgetContents);
 	setSizeAdjustPolicy(AdjustToContents);
 	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);

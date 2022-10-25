@@ -195,7 +195,6 @@ QComboBox QAbstractItemView {
     </property>
     <addaction name="actionNouveau"/>
     <addaction name="actionImporter"/>
-    <addaction name="actionExporter"/>
    </widget>
    <widget class="QMenu" name="menuAide">
     <property name="title">
@@ -292,6 +291,10 @@ QComboBox QAbstractItemView {
    </property>
   </action>
   <action name="actionTh_me">
+   <property name="icon">
+    <iconset>
+     <normaloff>images/mainwindow/pantone.png</normaloff>images/mainwindow/pantone.png</iconset>
+   </property>
    <property name="text">
     <string>Thème</string>
    </property>
