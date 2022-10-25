@@ -47,6 +47,9 @@
     <QtUic Include="projet.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="commandtheme.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -77,6 +80,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="lineEdit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="commandtheme.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -138,6 +144,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="menuselector.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="commandtheme.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

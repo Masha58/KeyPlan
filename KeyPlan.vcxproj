@@ -83,6 +83,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="commandtheme.cpp" />
     <ClCompile Include="containerProjet.cpp" />
     <ClCompile Include="dashboard.cpp" />
     <ClCompile Include="lineEdit.cpp" />
@@ -92,6 +93,7 @@
     <ClCompile Include="projectmanagement.cpp" />
     <ClCompile Include="projet.cpp" />
     <ClCompile Include="tache.cpp" />
+    <QtUic Include="commandtheme.ui" />
     <QtUic Include="dashboard.ui" />
     <QtUic Include="mainwindow.ui" />
     <QtMoc Include="mainwindow.h" />
@@ -128,6 +130,7 @@
     <QtMoc Include="projet.h" />
     <QtMoc Include="containerProjet.h" />
     <QtMoc Include="menuselector.h" />
+    <QtMoc Include="commandtheme.h" />
     <ClInclude Include="lineEdit.h" />
     <ClInclude Include="tache.h" />
   </ItemGroup>
