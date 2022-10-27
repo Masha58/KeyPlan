@@ -12,14 +12,15 @@ class ContainerProjet : public QScrollArea
 {
 	Q_OBJECT
 private:
-	
-	QWidget* scrollAreaWidgetContents;
+	QWidget scrollAreaWidgetContents;
+
+
 public:
 	ContainerProjet(int);
 	~ContainerProjet();
-	QVBoxLayout* vboxLayout = nullptr;
+	QVBoxLayout vboxLayout;
 
-	QWidget& getScrollAreaWidgetContent() { return *scrollAreaWidgetContents; }
+	QWidget& getScrollAreaWidgetContent() { return scrollAreaWidgetContents; }
 	
 
 private slots:

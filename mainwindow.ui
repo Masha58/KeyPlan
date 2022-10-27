@@ -205,7 +205,7 @@ QComboBox QAbstractItemView {
     <property name="title">
      <string>Edit</string>
     </property>
-    <addaction name="actionTh_me"/>
+    <addaction name="actionTheme"/>
    </widget>
    <widget class="QMenu" name="menuProfile">
     <property name="title">
@@ -282,7 +282,7 @@ QComboBox QAbstractItemView {
     <string>Importer</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+E</string>
+    <string>Ctrl+I</string>
    </property>
   </action>
   <action name="actionExporter">
@@ -290,13 +290,16 @@ QComboBox QAbstractItemView {
     <string>Exporter</string>
    </property>
   </action>
-  <action name="actionTh_me">
+  <action name="actionTheme">
    <property name="icon">
     <iconset>
      <normaloff>images/mainwindow/pantone.png</normaloff>images/mainwindow/pantone.png</iconset>
    </property>
    <property name="text">
     <string>Thème</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
    </property>
   </action>
   <action name="actionfhgf">

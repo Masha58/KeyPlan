@@ -6,5 +6,4 @@ CommandTheme::CommandTheme(QWidget *parent)
 	ui.setupUi(this);
 }
 
-CommandTheme::~CommandTheme()
-{}
+CommandTheme::~CommandTheme() = default;

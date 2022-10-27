@@ -17,14 +17,14 @@ public:
 	MenuSelector(QWidget *parent = nullptr);
 	~MenuSelector();
 
-	QString getValueComboBox() { return comboBox->currentText(); };
+	QString getValueComboBox() { return comboBox.currentText(); };
 
 private:
-	QVBoxLayout* vbox;
-	QHBoxLayout* hbox;
-	QComboBox* comboBox;
-	QPushButton* ok;
-	QPushButton* cancel;
+	QVBoxLayout vbox;
+	QHBoxLayout hbox;
+	QComboBox comboBox;
+	QPushButton ok;
+	QPushButton cancel;
 
 private slots:
 	void accepter();

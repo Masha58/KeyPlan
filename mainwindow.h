@@ -7,6 +7,7 @@
 #include <QStackedLayout>
 #include "projectmanagement.h"
 #include "dashboard.h"
+#include "commandtheme.h"
 
 class mainwindow : public QMainWindow
 {
@@ -22,8 +23,12 @@ private:
     QStackedLayout* mainStackedlayout;
     ProjectManagement *projectmanagement;
 
+    CommandTheme* commandTheme;
+
 private slots:
     void change_fenetre(int);
+    void activateCommandTheme();
+    void closeTabTheme();
 };
 
 

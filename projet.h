@@ -3,6 +3,7 @@
 #include <QWidget>
 #include <QtGui>
 #include <QtCore>
+#include <memory>
 #include "ui_projet.h"
 #include "lineEdit.h"
 
@@ -13,24 +14,23 @@ class Projet : public QWidget
 	Q_OBJECT
 
 public:
-	Projet();
 	Projet(int, QString, QString, QString, QString);
 	~Projet();
 	Ui::ProjetClass ui;
-	LineEdit* lineEdit_titre;
-	LineEdit* lineEdit_nom_client;
 
 	int getStatut() { return statut; }
 	int getToken() { return token; }
 
-	QString getParentWidget() { return this->parentWidget()->objectName(); }
+	QString getParentWidget() { return parentWidget()->objectName(); }
 	QFrame& getFrameDetails() { return *ui.fr_annexe; }
 	QFrame& getFrameProjet() { return *ui.fr_projet; }
 	QString getNom_projet() { return nom_projet; }
 	QTextEdit& getTe_descriotion() { return *ui.te_description; }
-	bool IsMinimumDistanceRiched(QMouseEvent*);
-	bool moveInLayout(QWidget* widget, MoveDirection direction);
+	bool IsMinimumDistanceRiched(const QMouseEvent*) const;
+	bool moveInLayout(QWidget*, MoveDirection direction) const;
 	void setToken(int newtoken) { token = newtoken; }
+	double getoldX() { return oldX; }
+	double getoldY() { return oldY; }
 
 protected:
 	
@@ -40,16 +40,18 @@ protected:
 	QString type_projet;
 	QString nom_client;
 	QString description;
-	QString commentaire;
+	QString commentaire = "";
 
 	// autre
-	int token;
-	double oldX;
-	double oldY;
-	double mouseClickY;
-	double mouseClickX;
+	int token = 0;
+	double oldX = 0;
+	double oldY = 0;
+	double mouseClickY = 0;
+	double mouseClickX = 0;
+	QMimeData* mimeData;
 	QPoint dragStartPosition;
-	QMimeData* mimeData = nullptr;
+	LineEdit lineEdit_titre;
+	LineEdit lineEdit_nom_client;
 
 public slots:
 	void mouseMoveEvent(QMouseEvent*);

@@ -1,40 +1,15 @@
 #include "projet.h"
 #include <QComboBox>
 
-QString color_app = "";
-QString color_plugin = "";
-QString color_task = "";
+const QString color_app = "";
+const QString color_plugin = "";
+const QString color_task = "";
 
-Projet::Projet()
-{
-    ui.setupUi(this);
-    
-    token = 0;
-    statut = 0;
-    type_projet = "Undefined";
-    nom_projet = "New Project";
-    nom_client = "Nom client";
-    description = "";
-    commentaire = "";
-
-    lineEdit_titre = new LineEdit(nom_projet, "black");
-    lineEdit_nom_client = new LineEdit(nom_client, "rgb(90, 90, 90)");
-
-    ui.la_tag_projet->setText(type_projet);
-    ui.vl_titre->addWidget(lineEdit_titre);
-    ui.hl_nom_client->addWidget(lineEdit_nom_client);
-    ui.fr_annexe->setVisible(false);
-
-    ui.fr_projet->setMinimumSize(50, 120);
-    ui.fr_projet->setMaximumSize(500, 120);
-}
-
-Projet::Projet(int statut, QString type_projet, QString nom_projet, QString nom_client, QString description) :
-	statut(statut),type_projet(type_projet), nom_projet(nom_projet), nom_client(nom_client), description(description)
+Projet::Projet(int statut, QString nom_projet, QString type_projet, QString nom_client, QString description) :
+	statut(statut), nom_projet(nom_projet), type_projet(type_projet), nom_client(nom_client), description(description),
+    lineEdit_titre(LineEdit(nom_projet, "black")), lineEdit_nom_client(LineEdit(nom_client, "rgb(90, 90, 90)"))
 {
 	ui.setupUi(this);
-	commentaire = "";
-    token = 0;
 
 	if (type_projet == "Application")
 		ui.la_tag_projet->setStyleSheet("background-color: rgb(0, 188, 213);color:white;border-radius:3px;");
@@ -44,37 +19,25 @@ Projet::Projet(int statut, QString type_projet, QString nom_projet, QString nom_
 		ui.la_tag_projet->setStyleSheet("background-color: rgb(84, 229, 154);color:white;border-radius:3px;");
 		
 	ui.la_tag_projet->setText(type_projet);
-
-
-    lineEdit_titre = new LineEdit(nom_projet, "black");
-    lineEdit_nom_client = new LineEdit(nom_client, "rgb(90, 90, 90)");
-    ui.hl_nom_client->addWidget(lineEdit_nom_client);
-    ui.vl_titre->addWidget(lineEdit_titre);
+    ui.hl_nom_client->addWidget(&lineEdit_nom_client);
+    ui.vl_titre->addWidget(&lineEdit_titre);
     ui.fr_annexe->setVisible(false);
     ui.fr_projet->setMaximumSize(500, 120);
-
-
 }
 
-Projet::~Projet()
-{
-    if(mimeData) delete mimeData;
-
-    delete lineEdit_titre;
-}
+Projet::~Projet() = default;
 
 void Projet::mouseMoveEvent(QMouseEvent* event)
 {
-
     mimeData = new QMimeData();
-    QPixmap dragPixmap = grab();
 
+    QPixmap dragPixmap = grab();
     QDrag *drag = new QDrag(this);
     drag->setMimeData(mimeData);
     drag->setPixmap(dragPixmap);
     drag->setHotSpot(event->pos());
-
     drag->exec(Qt::MoveAction);
+
 }
 
 void Projet::mousePressEvent(QMouseEvent* event)
@@ -87,12 +50,12 @@ void Projet::mousePressEvent(QMouseEvent* event)
     mouseClickY = event->globalY();
 }
 
-bool Projet::IsMinimumDistanceRiched(QMouseEvent* event)
+bool Projet::IsMinimumDistanceRiched(const QMouseEvent* event) const
 {
     return (event->pos() - dragStartPosition).manhattanLength() >= QApplication::startDragDistance();
 }
 
-bool Projet::moveInLayout(QWidget* widget, MoveDirection direction)
+bool Projet::moveInLayout(QWidget* widget, MoveDirection direction) const
 {
     QVBoxLayout* myLayout = qobject_cast<QVBoxLayout*>(widget->parentWidget()->layout());
 

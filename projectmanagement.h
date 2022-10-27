@@ -6,6 +6,9 @@
 #include <QSqlDriver>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <memory>
+#include <QtGui>
+#include <QtCore>
 #include "ui_projectmanagement.h"
 #include "projet.h"
 #include "plugin.h"
@@ -26,16 +29,16 @@ public:
 	void addBonLayout(Projet&);
 
 private:
-	int compteur;
+	int compteur = 1;
 	QSqlDatabase m_db;
 	Ui::ProjectManagementClass ui;
 	std::vector<Projet*> tab_projets;
 
-	ContainerProjet *containerprojet_todo;
-	ContainerProjet *containerprojet_doing;
-	ContainerProjet* containerprojet_done;
+	ContainerProjet containerprojet_todo = ContainerProjet(0);
+	ContainerProjet containerprojet_doing = ContainerProjet(1);
+	ContainerProjet containerprojet_done = ContainerProjet(2);
 
-	MenuSelector *menu;
+	MenuSelector menu;
 
 private slots:
 	void ajout_projet(QVBoxLayout&);
