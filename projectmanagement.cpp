@@ -65,9 +65,7 @@ void ProjectManagement::ajout_projet(QVBoxLayout& layout)
 			QPushButton::connect(project->ui.b_detail, &QPushButton::clicked, project, [this, project]() { afficher_details(project->getNom_projet()); });
 		
 		}
-		
 		compteur++;
-
 	}
 }
 
@@ -82,11 +80,9 @@ void ProjectManagement::supprimer_projet(QString nom_projet)
 			break;
 		}
 	}
-
 	tab_projets[position]->parentWidget()->layout()->removeWidget(tab_projets[position]);
 	tab_projets[position]->setVisible(false);
 	tab_projets.erase(tab_projets.begin() + position);
-
 }
 
 void ProjectManagement::afficher_details(QString nom_projet)
@@ -96,7 +92,7 @@ void ProjectManagement::afficher_details(QString nom_projet)
 	{
 		if (tab_projets[i]->getNom_projet() == nom_projet)
 		{
-			bool a = tab_projets[position]->parentWidget()->whatsThis() == containerprojet_todo.getScrollAreaWidgetContent().whatsThis();
+			//bool a = tab_projets[position]->parentWidget()->whatsThis() == containerprojet_todo.getScrollAreaWidgetContent().whatsThis();
 			position = i;
 			break;
 		}
@@ -118,19 +114,15 @@ void ProjectManagement::afficher_details(QString nom_projet)
 	}
 }
 
-void ProjectManagement::databaseConnect(QSqlDatabase m_db)
+void ProjectManagement::databaseConnect() const
 {
-	m_db = QSqlDatabase::addDatabase("QSQLITE");
+	QSqlDatabase m_db = QSqlDatabase::addDatabase("QSQLITE");
 	m_db.setDatabaseName("bdd/bdd");
 
 	if (!m_db.open())
-	{
 		qDebug() << "Error: connection with database failed";
-	}
 	else
-	{
 		qDebug() << "Database: connection ok";
-	}
 }
 
 void ProjectManagement::addBonLayout(Projet &projet)
@@ -152,7 +144,7 @@ void ProjectManagement::addBonLayout(Projet &projet)
 
 void ProjectManagement::maj_bdd()
 {
-	databaseConnect(m_db);
+	databaseConnect();
 	QSqlQuery query;
 	query.prepare("SELECT id_projet, statut, nom_projet, type_projet, nom_client, description, commentaire FROM PROJET");
 
@@ -191,3 +183,26 @@ void ProjectManagement::maj_bdd()
 		}
 	}
 }
+
+
+//void ui_clearLayout(QLayout* layout)
+//{
+//	while (!layout->isEmpty())
+//	{
+//		QWidget const* w = layout->takeAt(0)->widget();
+//		QLayout* hb = layout->takeAt(0)->layout();
+//		if (hb)
+//		{
+//			while (!hb->isEmpty())
+//			{
+//				QWidget* w = hb->layout()->takeAt(0)->widget();
+//				QLayout* ssLayout = hb->layout()->takeAt(0)->layout();
+//				if (w)
+//					hb->removeWidget(w);
+//				if (ssLayout)
+//					hb->removeItem(ssLayout);
+//			}
+//			layout->removeItem(hb);
+//		}
+//	}
+//}

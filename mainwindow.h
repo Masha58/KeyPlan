@@ -1,5 +1,3 @@
-#pragma once
-
 #include <QtWidgets/QMainWindow>
 #include "ui_mainwindow.h"
 #include "projet.h"
@@ -19,16 +17,16 @@ public:
 
 private:
     Ui::mainwindowClass ui;
-    Dashboard* dashboard;
-    QStackedLayout* mainStackedlayout;
-    ProjectManagement *projectmanagement;
 
-    CommandTheme* commandTheme;
+    Dashboard dashboard;
+    CommandTheme commandTheme;
+    QStackedLayout mainStackedlayout;
+    ProjectManagement projectmanagement;
 
 private slots:
     void change_fenetre(int);
-    void activateCommandTheme();
     void closeTabTheme();
+    void activateCommandTheme();
 };
 
 

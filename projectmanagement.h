@@ -25,7 +25,7 @@ public:
 	ProjectManagement(QWidget *parent = nullptr);
 	~ProjectManagement();
 	void maj_bdd();
-	void databaseConnect(QSqlDatabase);
+	void databaseConnect() const;
 	void addBonLayout(Projet&);
 
 private:

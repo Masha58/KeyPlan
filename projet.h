@@ -48,6 +48,7 @@ protected:
 	double oldY = 0;
 	double mouseClickY = 0;
 	double mouseClickX = 0;
+
 	QMimeData* mimeData;
 	QPoint dragStartPosition;
 	LineEdit lineEdit_titre;
