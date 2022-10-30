@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>399</width>
-    <height>315</height>
+    <height>341</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -56,6 +56,7 @@ border-radius:3px;
 #te_description, QListWidget
 {
 	border:1px solid rgb(200, 200, 200);
+font: 10.5pt &quot;Calibri&quot;;
 }</string>
      </property>
      <property name="frameShape">
@@ -132,7 +133,7 @@ font: 10pt &quot;Calibri&quot;;
       <item>
        <layout class="QHBoxLayout" name="hl_bottom">
         <item>
-         <widget class="QLabel" name="la_date">
+         <widget class="QLabel" name="la_nb_jobs">
           <property name="styleSheet">
            <string notr="true">color: rgb(90, 90, 90);</string>
           </property>
@@ -363,11 +364,11 @@ font: 10pt &quot;Calibri&quot;;
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>50</height>
+             <height>90</height>
             </size>
            </property>
            <property name="sizeAdjustPolicy">
-            <enum>QAbstractScrollArea::AdjustIgnored</enum>
+            <enum>QAbstractScrollArea::AdjustToContents</enum>
            </property>
            <property name="alternatingRowColors">
             <bool>true</bool>

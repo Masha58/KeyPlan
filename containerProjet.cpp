@@ -3,7 +3,7 @@
 ContainerProjet::ContainerProjet(int whatsthis): vboxLayout(QVBoxLayout(&scrollAreaWidgetContents))
 {
 	QString ssheet_back = "border:none; background:none; background-color:none;";
-	QString ssheet_scroll = "QScrollBar::handle:vertical{background-color: red;min-height:5px;border-radius: 4px;}"
+	QString ssheet_scroll = "QScrollBar::handle:vertical{background-color: rgb(220,220,220);width:3px; height:3px;border-radius: 4px;}"
 		"QScrollArea{background-color:none; border:none; background:none;}";
 
 	scrollAreaWidgetContents.setStyleSheet(ssheet_back);

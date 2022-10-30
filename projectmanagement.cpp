@@ -123,8 +123,8 @@ void ProjectManagement::afficher_details(QString nom_projet)
 	{
 		tab_projets[position]->setToken(1);
 		tab_projets[position]->getFrameDetails().setVisible(true);
-		tab_projets[position]->getFrameProjet().setMinimumSize(50, 320);
-		tab_projets[position]->getFrameProjet().setMaximumSize(500, 320);
+		tab_projets[position]->getFrameProjet().setMinimumSize(50, 350);
+		tab_projets[position]->getFrameProjet().setMaximumSize(500, 350);
 	}
 }
 

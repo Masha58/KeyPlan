@@ -65,5 +65,6 @@ public slots:
 
 	void maj_titre();
 	void maj_nomclient();
+	void ajouter_job(QString);
 
 };

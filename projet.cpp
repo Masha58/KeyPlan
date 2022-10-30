@@ -23,8 +23,14 @@ Projet::Projet(int statut, QString nom_projet, QString type_projet, QString nom_
     ui.fr_annexe->setVisible(false);
     ui.fr_projet->setMaximumSize(500, 120);
 
+    statut == 2 ? ui.la_nb_jobs->setText("1/1") : ui.la_nb_jobs->setText("0/1");
+
+    ajouter_job(nom_projet);
+
     LineEdit::connect(&lineEdit_titre, SIGNAL(editingFinished()), this, SLOT(maj_titre()));
     LineEdit::connect(&lineEdit_nom_client, SIGNAL(editingFinished()), this, SLOT(maj_nomclient()));
+
+    QPushButton::connect(ui.b_plus, &QPushButton::clicked, this, [this]() { ajouter_job("New Job"); });
 }
 
 void Projet::maj_titre()
@@ -55,6 +61,14 @@ void Projet::maj_nomclient()
 
     nom_client = lineEdit_nom_client.text();
     lineEdit_nom_client.setReadOnly(true);
+}
+
+void Projet::ajouter_job(QString nom)
+{
+    auto* listWidgetItem = new  QListWidgetItem(nom);
+    statut == 2 ? listWidgetItem->setCheckState(Qt::Checked) : listWidgetItem->setCheckState(Qt::Unchecked);
+    listWidgetItem->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+    ui.lw_jobs->addItem(listWidgetItem);
 }
 
 Projet::~Projet() = default;
