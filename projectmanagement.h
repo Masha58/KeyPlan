@@ -26,7 +26,10 @@ public:
 	~ProjectManagement();
 	void maj_bdd();
 	void databaseConnect() const;
-	void addBonLayout(Projet&);
+	void maj_statut();
+	void creationProjet(Projet&, QVBoxLayout&);
+
+	QVBoxLayout& returnLayoutFromProjet(Projet&);
 
 private:
 	int compteur = 1;

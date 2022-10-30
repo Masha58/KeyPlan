@@ -4,17 +4,15 @@
 #include <iostream>
 #include <QWidget>
 #include <QKeyEvent>
+#include <QValidator>
 
 class LineEdit : public QLineEdit
 {
-private:
+
 public:
 	LineEdit(QString, QString);
-	~LineEdit();
 
 private slots:
-	void mouseDoubleClickEvent(QMouseEvent*event);
-	void keyPressEvent(QKeyEvent *);
-
+	void mouseDoubleClickEvent(QMouseEvent*event) override;
 };
 

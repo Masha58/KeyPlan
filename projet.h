@@ -4,6 +4,9 @@
 #include <QtGui>
 #include <QtCore>
 #include <memory>
+#include <QComboBox>
+#include <QSqlQuery>
+#include <QSqlError>
 #include "ui_projet.h"
 #include "lineEdit.h"
 
@@ -19,6 +22,7 @@ public:
 	Ui::ProjetClass ui;
 
 	int getStatut() { return statut; }
+	void setStatut(int newStatut) { statut = newStatut; }
 	int getToken() { return token; }
 
 	QString getParentWidget() { return parentWidget()->objectName(); }
@@ -59,4 +63,7 @@ public slots:
 	void mousePressEvent(QMouseEvent*);
 	void mouseReleaseEvent(QMouseEvent*);
 	void paintEvent(QPaintEvent*);
+
+	void maj_titre();
+
 };

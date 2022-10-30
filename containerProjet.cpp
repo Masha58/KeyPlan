@@ -33,7 +33,10 @@ void ContainerProjet::dropEvent(QDropEvent* event)
 	else
 	{*/
 		vboxLayout.addWidget(qobject_cast<QWidget*>(event->source()));
+
+
 	//}
+
 }
 	
 

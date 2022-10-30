@@ -23,7 +23,8 @@ ProjectManagement::ProjectManagement(QWidget *parent)
 	QPushButton::connect(ui.b_newtask_to_do, &QPushButton::clicked, this, [this]() { ajout_projet(containerprojet_todo.vboxLayout); });
 	QPushButton::connect(ui.b_newtask_doing, &QPushButton::clicked, this, [this]() { ajout_projet(containerprojet_doing.vboxLayout); });
 	QPushButton::connect(ui.b_newtask_done, &QPushButton::clicked, this, [this]() { ajout_projet(containerprojet_done.vboxLayout); });
-
+	
+	
 }
 
 ProjectManagement::~ProjectManagement()
@@ -32,38 +33,43 @@ ProjectManagement::~ProjectManagement()
 	std::for_each(tab_projets.begin(), tab_projets.end(), second_deleter());
 }
 
+void ProjectManagement::creationProjet(Projet &project, QVBoxLayout& layout)
+{
+	layout.addWidget(&project);
+	tab_projets.push_back(&project);
+
+	QPushButton::connect(project.ui.b_supprimer, &QPushButton::clicked, &project, [this, &project]() { supprimer_projet(project.getNom_projet()); });
+	QPushButton::connect(project.ui.b_detail, &QPushButton::clicked, &project, [this, &project]() { afficher_details(project.getNom_projet()); });
+}
+
 void ProjectManagement::ajout_projet(QVBoxLayout& layout)
 {
 	int return_value = menu.exec();
+	QSqlQuery query;
+	query.prepare("INSERT INTO PROJET(statut, nom_projet, type_projet, nom_client, description, commentaire)VALUES(:statut, :nomp, :typep, 'Nom client', '', '')");
+	query.bindValue(":statut", layout.parentWidget()->whatsThis().toInt());
+	query.bindValue(":nomp", "Titre " + QString::number(compteur));
+	query.bindValue(":typep", menu.getValueComboBox());
+
+	if (!query.exec())
+		qWarning() << "Error ajout projet : " << query.lastError().text();
 
 	if (return_value)
 	{
 		if (menu.getValueComboBox() == "Plugin")
 		{
-			auto* project = new Plugin(0, "Titre " + QString::number(compteur), "Nom client", "Undefined");
-			layout.addWidget(project);
-			tab_projets.push_back(project);
-			QPushButton::connect(project->ui.b_supprimer, &QPushButton::clicked, project, [this, project]() { supprimer_projet(project->getNom_projet()); });
-			QPushButton::connect(project->ui.b_detail, &QPushButton::clicked, project, [this, project]() { afficher_details(project->getNom_projet()); });
-		
+			auto* project = new Plugin(layout.parentWidget()->whatsThis().toInt(), "Titre " + QString::number(compteur), "Nom client", "Undefined");
+			creationProjet(*project, layout);
 		}
 		else if (menu.getValueComboBox() == "Application")
 		{
-			auto* project = new Logiciel(0, "Titre " + QString::number(compteur), "Nom client", "Undefined");
-			layout.addWidget(project);
-			tab_projets.push_back(project);
-			QPushButton::connect(project->ui.b_supprimer, &QPushButton::clicked, project, [this, project]() { supprimer_projet(project->getNom_projet()); });
-			QPushButton::connect(project->ui.b_detail, &QPushButton::clicked, project, [this, project]() { afficher_details(project->getNom_projet()); });
-		
+			auto* project = new Logiciel(layout.parentWidget()->whatsThis().toInt(), "Titre " + QString::number(compteur), "Nom client", "Undefined");
+			creationProjet(*project, layout);
 		}
 		else
 		{
-			auto* project = new Tache(0, "Titre " + QString::number(compteur), "Nom client", "Undefined");
-			layout.addWidget(project);
-			tab_projets.push_back(project);
-			QPushButton::connect(project->ui.b_supprimer, &QPushButton::clicked, project, [this, project]() { supprimer_projet(project->getNom_projet()); });
-			QPushButton::connect(project->ui.b_detail, &QPushButton::clicked, project, [this, project]() { afficher_details(project->getNom_projet()); });
-		
+			auto* project = new Tache(layout.parentWidget()->whatsThis().toInt(), "Titre " + QString::number(compteur), "Nom client", "Undefined");
+			creationProjet(*project, layout);
 		}
 		compteur++;
 	}
@@ -71,7 +77,9 @@ void ProjectManagement::ajout_projet(QVBoxLayout& layout)
 
 void ProjectManagement::supprimer_projet(QString nom_projet)
 {
+	QSqlQuery query;
 	int position = 0;
+
 	for (unsigned int i = 0; i < tab_projets.size(); i++)
 	{
 		if (tab_projets[i]->getNom_projet() == nom_projet)
@@ -80,6 +88,13 @@ void ProjectManagement::supprimer_projet(QString nom_projet)
 			break;
 		}
 	}
+
+	query.prepare("DELETE FROM PROJET WHERE nom_projet = :nomp");
+	query.bindValue(":nomp", tab_projets[position]->getNom_projet());
+
+	if (!query.exec())
+		qWarning() << "Error supprimer projet : " << query.lastError().text();
+
 	tab_projets[position]->parentWidget()->layout()->removeWidget(tab_projets[position]);
 	tab_projets[position]->setVisible(false);
 	tab_projets.erase(tab_projets.begin() + position);
@@ -125,22 +140,15 @@ void ProjectManagement::databaseConnect() const
 		qDebug() << "Database: connection ok";
 }
 
-void ProjectManagement::addBonLayout(Projet &projet)
+QVBoxLayout& ProjectManagement::returnLayoutFromProjet(Projet &projet)
 {
 	if (projet.getStatut() == 0)
-	{
-		containerprojet_todo.vboxLayout.addWidget(&projet);
-	}
+		return containerprojet_todo.vboxLayout;
 	else if (projet.getStatut() == 1)
-	{
-		containerprojet_doing.vboxLayout.addWidget(&projet);
-	}
-	if (projet.getStatut() == 2)
-	{
-		containerprojet_done.vboxLayout.addWidget(&projet);
-	}
+		return containerprojet_doing.vboxLayout;
+	else
+		return containerprojet_done.vboxLayout;
 }
-
 
 void ProjectManagement::maj_bdd()
 {
@@ -153,35 +161,29 @@ void ProjectManagement::maj_bdd()
 
 	while (query.next())
 	{
-
 		if (query.value(3).toString() == "Task")
 		{
 			auto* project = new Tache(query.value(1).toInt(), query.value(2).toString(), query.value(4).toString(), query.value(5).toString());
-			addBonLayout(*project);
-			tab_projets.push_back(project);
-			QPushButton::connect(project->ui.b_supprimer, &QPushButton::clicked, project, [this, project]() { supprimer_projet(project->getNom_projet()); });
-			QPushButton::connect(project->ui.b_detail, &QPushButton::clicked, project, [this, project]() { afficher_details(project->getNom_projet()); });
-
+			creationProjet(*project, returnLayoutFromProjet(*project));
 		}
 		else if (query.value(3).toString() == "Plugin")
 		{
 			auto* project = new Plugin(query.value(1).toInt(), query.value(2).toString(), query.value(4).toString(), query.value(5).toString());
-			addBonLayout(*project);
-			tab_projets.push_back(project);
-			QPushButton::connect(project->ui.b_supprimer, &QPushButton::clicked, project, [this, project]() { supprimer_projet(project->getNom_projet()); });
-			QPushButton::connect(project->ui.b_detail, &QPushButton::clicked, project, [this, project]() { afficher_details(project->getNom_projet()); });
-
+			creationProjet(*project, returnLayoutFromProjet(*project));
 		}
 		else if (query.value(3).toString() == "Application")
 		{
 			auto* project = new Logiciel(query.value(1).toInt(), query.value(2).toString(), query.value(4).toString(), query.value(5).toString());
-			addBonLayout(*project);
-			tab_projets.push_back(project);
-			QPushButton::connect(project->ui.b_supprimer, &QPushButton::clicked, project, [this, project]() { supprimer_projet(project->getNom_projet()); });
-			QPushButton::connect(project->ui.b_detail, &QPushButton::clicked, project, [this, project]() { afficher_details(project->getNom_projet()); });
-
+			creationProjet(*project, returnLayoutFromProjet(*project));
 		}
 	}
+}
+
+void ProjectManagement::maj_statut()
+{
+	std::for_each(tab_projets.begin(), tab_projets.end(), [](Projet* projet) {projet->parentWidget()->whatsThis().toInt(); });
+	
+	qDebug() << tab_projets[0]->parentWidget()->whatsThis();
 }
 
 

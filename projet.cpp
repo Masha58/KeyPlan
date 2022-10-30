@@ -1,5 +1,4 @@
 #include "projet.h"
-#include <QComboBox>
 
 const QString color_app = "";
 const QString color_plugin = "";
@@ -23,6 +22,25 @@ Projet::Projet(int statut, QString nom_projet, QString type_projet, QString nom_
     ui.vl_titre->addWidget(&lineEdit_titre);
     ui.fr_annexe->setVisible(false);
     ui.fr_projet->setMaximumSize(500, 120);
+
+    LineEdit::connect(&lineEdit_titre, SIGNAL(editingFinished()), this, SLOT(maj_titre()));
+
+}
+
+void Projet::maj_titre()
+{
+    QSqlQuery query;
+    query.prepare("UPDATE PROJET SET nom_projet = :newNomp WHERE nom_projet = :nomp and nom_client = :nomc and type_projet = :typep");
+    query.bindValue(":nomp", nom_projet);
+    query.bindValue(":nomc", nom_client);
+    query.bindValue(":typep", type_projet);
+    query.bindValue(":newNomp", lineEdit_titre.text());
+
+    if (!query.exec())
+        qWarning() << "Error maj titre : " << query.lastError().text();
+    
+    nom_projet = lineEdit_titre.text();
+    lineEdit_titre.setReadOnly(true);
 }
 
 Projet::~Projet() = default;
@@ -37,7 +55,6 @@ void Projet::mouseMoveEvent(QMouseEvent* event)
     drag->setPixmap(dragPixmap);
     drag->setHotSpot(event->pos());
     drag->exec(Qt::MoveAction);
-
 }
 
 void Projet::mousePressEvent(QMouseEvent* event)

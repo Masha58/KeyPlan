@@ -15,12 +15,6 @@ mainwindow::mainwindow(QWidget *parent): QMainWindow(parent)
     ui.setupUi(this);
     setWindowTitle("KeyPlan (beta version)");
 
-    //// initialisation des attributs layout
-    //projectmanagement = new ProjectManagement();
-    //dashboard = new Dashboard();
-    //mainStackedlayout = new QStackedLayout();
-    //commandTheme = new CommandTheme();
-
     // agencement des layouts 
     ui.vl_projectmanagement->addLayout(&mainStackedlayout);
     mainStackedlayout.addWidget(&projectmanagement);
