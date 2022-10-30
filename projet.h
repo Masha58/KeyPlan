@@ -44,7 +44,6 @@ protected:
 	QString type_projet;
 	QString nom_client;
 	QString description;
-	QString commentaire = "";
 
 	// autre
 	int token = 0;

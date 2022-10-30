@@ -25,20 +25,19 @@ Projet::Projet(int statut, QString nom_projet, QString type_projet, QString nom_
 
     LineEdit::connect(&lineEdit_titre, SIGNAL(editingFinished()), this, SLOT(maj_titre()));
     LineEdit::connect(&lineEdit_nom_client, SIGNAL(editingFinished()), this, SLOT(maj_nomclient()));
-
 }
 
 void Projet::maj_titre()
 {
     QSqlQuery query;
-    query.prepare("UPDATE PROJET SET nom_projet = :newNomp WHERE nom_projet = :nomp and nom_client = :nomc and type_projet = :typep");
+    query.prepare("UPDATE PROJETS SET nom_projet = :newNomp WHERE nom_projet = :nomp and nom_client = :nomc and type_projet = :typep");
     query.bindValue(":nomp", nom_projet);
     query.bindValue(":nomc", nom_client);
     query.bindValue(":typep", type_projet);
     query.bindValue(":newNomp", lineEdit_titre.text());
 
     if (!query.exec())
-        qWarning() << "Error maj titre : " << query.lastError().text();
+        qWarning() << "Error maj_titre: " << query.lastError().text();
     
     nom_projet = lineEdit_titre.text();
     lineEdit_titre.setReadOnly(true);
@@ -47,7 +46,7 @@ void Projet::maj_titre()
 void Projet::maj_nomclient()
 {
     QSqlQuery query;
-    query.prepare("UPDATE PROJET SET nom_client = :nomc WHERE nom_projet = :nomp");
+    query.prepare("UPDATE PROJETS SET nom_client = :nomc WHERE nom_projet = :nomp");
     query.bindValue(":nomp", nom_projet);
     query.bindValue(":nomc", lineEdit_nom_client.text());
 
@@ -110,6 +109,7 @@ bool Projet::moveInLayout(QWidget* widget, MoveDirection direction) const
     myLayout->insertWidget(newIndex, widget);
     return true;
 }
+
 
 void Projet::paintEvent(QPaintEvent*)
 {

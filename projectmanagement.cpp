@@ -45,7 +45,7 @@ void ProjectManagement::ajout_projet(QVBoxLayout& layout)
 {
 	int return_value = menu.exec();
 	QSqlQuery query;
-	query.prepare("INSERT INTO PROJET(statut, nom_projet, type_projet, nom_client, description, commentaire)VALUES(:statut, :nomp, :typep, 'Nom client', '', '')");
+	query.prepare("INSERT INTO PROJETS(statut, nom_projet, type_projet, nom_client, description)VALUES(:statut, :nomp, :typep, 'Nom client', '')");
 	query.bindValue(":statut", layout.parentWidget()->whatsThis().toInt());
 	query.bindValue(":nomp", "Titre " + QString::number(compteur));
 	query.bindValue(":typep", menu.getValueComboBox());
@@ -88,7 +88,7 @@ void ProjectManagement::supprimer_projet(QString nom_projet)
 		}
 	}
 
-	query.prepare("DELETE FROM PROJET WHERE nom_projet = :nomp");
+	query.prepare("DELETE FROM PROJETS WHERE nom_projet = :nomp");
 	query.bindValue(":nomp", tab_projets[position]->getNom_projet());
 
 	if (!query.exec())
@@ -123,8 +123,8 @@ void ProjectManagement::afficher_details(QString nom_projet)
 	{
 		tab_projets[position]->setToken(1);
 		tab_projets[position]->getFrameDetails().setVisible(true);
-		tab_projets[position]->getFrameProjet().setMinimumSize(50, 300);
-		tab_projets[position]->getFrameProjet().setMaximumSize(500, 300);
+		tab_projets[position]->getFrameProjet().setMinimumSize(50, 320);
+		tab_projets[position]->getFrameProjet().setMaximumSize(500, 320);
 	}
 }
 
@@ -153,7 +153,7 @@ void ProjectManagement::maj_bdd()
 {
 	databaseConnect();
 	QSqlQuery query;
-	query.prepare("SELECT id_projet, statut, nom_projet, type_projet, nom_client, description, commentaire FROM PROJET");
+	query.prepare("SELECT id_projet, statut, nom_projet, type_projet, nom_client, description FROM PROJETS");
 
 	if (!query.exec())
 		qWarning() << "Error vmaj bdd : " << query.lastError().text();

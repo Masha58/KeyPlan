@@ -31,7 +31,7 @@ void ContainerProjet::dropEvent(QDropEvent* event)
 
 	// MAJ BDD
 	QSqlQuery query;
-	query.prepare("UPDATE PROJET SET statut = :newStatut WHERE nom_projet = :nomp");
+	query.prepare("UPDATE PROJETS SET statut = :newStatut WHERE nom_projet = :nomp");
 	query.bindValue(":nomp", qobject_cast<Projet*>(event->source())->getNom_projet());
 	query.bindValue(":newStatut", scrollAreaWidgetContents.whatsThis().toInt());
 
