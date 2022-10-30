@@ -13,19 +13,18 @@ class ContainerProjet : public QScrollArea
 	Q_OBJECT
 private:
 	QWidget scrollAreaWidgetContents;
-
+	std::vector<Projet*> tab_projets;
 
 public:
 	ContainerProjet(int);
 	~ContainerProjet();
-	QVBoxLayout vboxLayout;
 
+	QVBoxLayout vboxLayout;
 	QWidget& getScrollAreaWidgetContent() { return scrollAreaWidgetContents; }
 	
 
 private slots:
 	void dragEnterEvent(QDragEnterEvent*);
 	void dropEvent(QDropEvent*);
-
 };
 

@@ -65,5 +65,6 @@ public slots:
 	void paintEvent(QPaintEvent*);
 
 	void maj_titre();
+	void maj_nomclient();
 
 };

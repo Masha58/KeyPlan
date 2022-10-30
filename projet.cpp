@@ -24,6 +24,7 @@ Projet::Projet(int statut, QString nom_projet, QString type_projet, QString nom_
     ui.fr_projet->setMaximumSize(500, 120);
 
     LineEdit::connect(&lineEdit_titre, SIGNAL(editingFinished()), this, SLOT(maj_titre()));
+    LineEdit::connect(&lineEdit_nom_client, SIGNAL(editingFinished()), this, SLOT(maj_nomclient()));
 
 }
 
@@ -41,6 +42,20 @@ void Projet::maj_titre()
     
     nom_projet = lineEdit_titre.text();
     lineEdit_titre.setReadOnly(true);
+}
+
+void Projet::maj_nomclient()
+{
+    QSqlQuery query;
+    query.prepare("UPDATE PROJET SET nom_client = :nomc WHERE nom_projet = :nomp");
+    query.bindValue(":nomp", nom_projet);
+    query.bindValue(":nomc", lineEdit_nom_client.text());
+
+    if (!query.exec())
+        qWarning() << "Error maj_nomclient : " << query.lastError().text();
+
+    nom_client = lineEdit_nom_client.text();
+    lineEdit_nom_client.setReadOnly(true);
 }
 
 Projet::~Projet() = default;

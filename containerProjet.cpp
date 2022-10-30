@@ -1,6 +1,6 @@
 #include "containerProjet.h"
 
-ContainerProjet::ContainerProjet(int whatsthis):vboxLayout(QVBoxLayout(&scrollAreaWidgetContents))
+ContainerProjet::ContainerProjet(int whatsthis): vboxLayout(QVBoxLayout(&scrollAreaWidgetContents))
 {
 	QString ssheet_back = "border:none; background:none; background-color:none;";
 	QString ssheet_scroll = "QScrollBar::handle:vertical{background-color: red;min-height:5px;border-radius: 4px;}"
@@ -23,20 +23,21 @@ ContainerProjet::ContainerProjet(int whatsthis):vboxLayout(QVBoxLayout(&scrollAr
 
 ContainerProjet::~ContainerProjet() = default;
 
-
 void ContainerProjet::dropEvent(QDropEvent* event)
 {
-	/*if (event->source()->parent() == &scrollAreaWidgetContents)
-	{
-		emit event->source().mouseReleaseEvent();
-	}
-	else
-	{*/
-		vboxLayout.addWidget(qobject_cast<QWidget*>(event->source()));
+	vboxLayout.addWidget(qobject_cast<QWidget*>(event->source()));
 
+	qobject_cast<Projet*>(event->source())->setStatut(scrollAreaWidgetContents.whatsThis().toInt());
 
-	//}
+	// MAJ BDD
+	QSqlQuery query;
+	query.prepare("UPDATE PROJET SET statut = :newStatut WHERE nom_projet = :nomp");
+	query.bindValue(":nomp", qobject_cast<Projet*>(event->source())->getNom_projet());
+	query.bindValue(":newStatut", scrollAreaWidgetContents.whatsThis().toInt());
 
+	if (!query.exec())
+		qWarning() << "Error dropEvent : " << query.lastError().text();
+	
 }
 	
 

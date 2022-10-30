@@ -23,9 +23,8 @@ ProjectManagement::ProjectManagement(QWidget *parent)
 	QPushButton::connect(ui.b_newtask_to_do, &QPushButton::clicked, this, [this]() { ajout_projet(containerprojet_todo.vboxLayout); });
 	QPushButton::connect(ui.b_newtask_doing, &QPushButton::clicked, this, [this]() { ajout_projet(containerprojet_doing.vboxLayout); });
 	QPushButton::connect(ui.b_newtask_done, &QPushButton::clicked, this, [this]() { ajout_projet(containerprojet_done.vboxLayout); });
-	
-	
 }
+
 
 ProjectManagement::~ProjectManagement()
 {
@@ -181,11 +180,8 @@ void ProjectManagement::maj_bdd()
 
 void ProjectManagement::maj_statut()
 {
-	std::for_each(tab_projets.begin(), tab_projets.end(), [](Projet* projet) {projet->parentWidget()->whatsThis().toInt(); });
-	
-	qDebug() << tab_projets[0]->parentWidget()->whatsThis();
+	std::for_each(tab_projets.begin(), tab_projets.end(), [](Projet* projet) {projet->setStatut(projet->parentWidget()->whatsThis().toInt()); });
 }
-
 
 //void ui_clearLayout(QLayout* layout)
 //{
