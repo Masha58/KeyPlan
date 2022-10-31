@@ -41,6 +41,23 @@ void ProjectManagement::creationProjet(Projet &project, QVBoxLayout& layout)
 	QPushButton::connect(project.ui.b_detail, &QPushButton::clicked, &project, [this, &project]() { afficher_details(project.getNom_projet()); });
 }
 
+void ProjectManagement::creationJobs(Projet& projet)
+{
+	QSqlQuery query;
+	query.prepare("SELECT nom_job, job_fait FROM JOBS J JOIN PROJETS P ON P.id_projet = J.id_projet WHERE P.id_projet = :pid");
+	query.bindValue(":pid", projet.getIdProjet());
+
+	if (!query.exec())
+		qWarning() << "Error creationJobs : " << query.lastError().text();
+
+	while (query.next())
+	{
+		projet.ajouter_listWidgetItem(query.value(0).toString(), query.value(1).toInt());
+	}
+
+	projet.maj_nb_job();
+}
+
 void ProjectManagement::ajout_projet(QVBoxLayout& layout)
 {
 	int return_value = menu.exec();
@@ -164,16 +181,19 @@ void ProjectManagement::maj_bdd()
 		{
 			auto* project = new Tache(query.value(1).toInt(), query.value(2).toString(), query.value(4).toString(), query.value(5).toString());
 			creationProjet(*project, returnLayoutFromProjet(*project));
+			creationJobs(*project);
 		}
 		else if (query.value(3).toString() == "Plugin")
 		{
 			auto* project = new Plugin(query.value(1).toInt(), query.value(2).toString(), query.value(4).toString(), query.value(5).toString());
 			creationProjet(*project, returnLayoutFromProjet(*project));
+			creationJobs(*project);
 		}
 		else if (query.value(3).toString() == "Application")
 		{
 			auto* project = new Logiciel(query.value(1).toInt(), query.value(2).toString(), query.value(4).toString(), query.value(5).toString());
 			creationProjet(*project, returnLayoutFromProjet(*project));
+			creationJobs(*project);
 		}
 	}
 }

@@ -24,6 +24,7 @@ public:
 	int getStatut() { return statut; }
 	void setStatut(int newStatut) { statut = newStatut; }
 	int getToken() { return token; }
+	int getIdProjet();
 
 	QString getParentWidget() { return parentWidget()->objectName(); }
 	QFrame& getFrameDetails() { return *ui.fr_annexe; }
@@ -36,6 +37,8 @@ public:
 	double getoldX() { return oldX; }
 	double getoldY() { return oldY; }
 
+
+
 protected:
 	
 	// bdd
@@ -44,6 +47,7 @@ protected:
 	QString type_projet;
 	QString nom_client;
 	QString description;
+	std::vector<QString> list_job;
 
 	// autre
 	int token = 0;
@@ -65,6 +69,11 @@ public slots:
 
 	void maj_titre();
 	void maj_nomclient();
-	void ajouter_job(QString);
+	void maj_description();
+	void maj_nb_job();
+	void maj_job(QListWidgetItem*);
+	void ajouter_job(QString, int);
+	void supprimer_job();
+	void ajouter_listWidgetItem(QString, int);
 
 };

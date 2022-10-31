@@ -28,6 +28,8 @@ public:
 	void databaseConnect() const;
 	void maj_statut();
 	void creationProjet(Projet&, QVBoxLayout&);
+	void creationJobs(Projet&);
+
 
 	QVBoxLayout& returnLayoutFromProjet(Projet&);
 

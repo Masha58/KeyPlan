@@ -10,10 +10,11 @@ description VARCHAR(300)
 );
 
 CREATE TABLE IF NOT EXISTS JOBS(
-id_projet INTEGER NOT NULL PRIMARY KEY,
+id_projet INTEGER NOT NULL,
 nom_job VARCHAR(200),
 job_fait INTEGER,
-FOREIGN KEY(id_projet) REFERENCES PROJET(id_projet)
+FOREIGN KEY(id_projet) REFERENCES PROJET(id_projet),
+PRIMARY KEY(nom_job, id_projet)
 );
 
 

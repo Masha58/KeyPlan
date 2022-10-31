@@ -11,8 +11,5 @@ class LineEdit : public QLineEdit
 
 public:
 	LineEdit(QString, QString);
-
-private slots:
-	void mouseDoubleClickEvent(QMouseEvent*event) override;
 };
 
