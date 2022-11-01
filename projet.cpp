@@ -22,7 +22,7 @@ Projet::Projet(int statut, QString nom_projet, QString type_projet, QString nom_
     ui.hl_nom_client->addWidget(&lineEdit_nom_client);
     ui.vl_titre->addWidget(&lineEdit_titre);
     ui.fr_annexe->setVisible(false);
-    ui.fr_projet->setMaximumSize(500, 120);
+    ui.fr_projet->setMaximumSize(1000, 120);
 
     LineEdit::connect(&lineEdit_titre, SIGNAL(editingFinished()), this, SLOT(maj_titre()));
     LineEdit::connect(&lineEdit_nom_client, SIGNAL(editingFinished()), this, SLOT(maj_nomclient()));

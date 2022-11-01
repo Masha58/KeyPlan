@@ -133,15 +133,15 @@ void ProjectManagement::afficher_details(QString nom_projet)
 	{
 		tab_projets[position]->setToken(0);
 		tab_projets[position]->getFrameDetails().setVisible(false);
-		tab_projets[position]->getFrameProjet().setMinimumSize(50, 120);
-		tab_projets[position]->getFrameProjet().setMaximumSize(500, 120);
+		tab_projets[position]->getFrameProjet().setMinimumSize(200, 120);
+		tab_projets[position]->getFrameProjet().setMaximumSize(1000, 120);
 	}
 	else
 	{
 		tab_projets[position]->setToken(1);
 		tab_projets[position]->getFrameDetails().setVisible(true);
-		tab_projets[position]->getFrameProjet().setMinimumSize(50, 350);
-		tab_projets[position]->getFrameProjet().setMaximumSize(500, 350);
+		tab_projets[position]->getFrameProjet().setMinimumSize(200, 350);
+		tab_projets[position]->getFrameProjet().setMaximumSize(1000, 350);
 	}
 }
 
