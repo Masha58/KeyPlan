@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CONTAINERPROJET_H
+#define CONTAINERPROJET_H
 
 #include <QWidget>
 #include <QtGui>
@@ -27,4 +28,6 @@ private slots:
 	void dragEnterEvent(QDragEnterEvent*);
 	void dropEvent(QDropEvent*);
 };
+
+#endif
 

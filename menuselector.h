@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MENUSELECTOR_H
+#define MENUSELECTOR_H
 
 #include <QDialog>
 #include <QMessageBox>
@@ -30,3 +31,5 @@ private slots:
 	void accepter();
 	void rejeter();
 };
+
+#endif

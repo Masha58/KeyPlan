@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DASHBOARD_H
+#define DASHBOARD_H
 
 #include <QWidget>
 #include "ui_dashboard.h"
@@ -14,3 +15,5 @@ public:
 private:
 	Ui::DashboardClass ui;
 };
+
+#endif

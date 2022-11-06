@@ -1,4 +1,5 @@
-#pragma once
+#ifndef LINEEDIT_H
+#define LINEEDIT_H
 
 #include <QLineEdit>
 #include <iostream>
@@ -13,3 +14,4 @@ public:
 	LineEdit(QString, QString);
 };
 
+#endif

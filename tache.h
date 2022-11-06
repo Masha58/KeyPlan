@@ -1,4 +1,6 @@
-#pragma once
+#ifndef TACHE_H
+#define TACHE_H
+
 #include "projet.h"
 
 class Tache : public Projet
@@ -10,3 +12,4 @@ public:
 	~Tache();
 };
 
+#endif

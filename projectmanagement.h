@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PROJECTMANAGEMENT_H
+#define PROJECTMANAGEMENT_H
 
 #include <QWidget>
 #include <iostream>
@@ -50,3 +51,5 @@ private slots:
 	void supprimer_projet(QString);
 	void afficher_details(QString);
 };
+
+#endif

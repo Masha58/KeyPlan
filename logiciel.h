@@ -1,4 +1,5 @@
-#pragma once
+#ifndef LOGICIEL_H
+#define LOGICIEL_H
 
 #include <QObject>
 #include "projet.h"
@@ -15,3 +16,5 @@ private:
 	QString type_logiciel;
 	QString plateforme;
 };
+
+#endif

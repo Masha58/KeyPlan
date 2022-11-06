@@ -1,3 +1,6 @@
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
+
 #include <QtWidgets/QMainWindow>
 #include "ui_mainwindow.h"
 #include "projet.h"
@@ -40,3 +43,5 @@ vert foncé : 97,186,85);
 violet : rgb(192, 124, 222);
 jaune : rgb(232,210,29);
 */
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef COMMANDTHEME_H
+#define COMMANDTHEME_H
 
 #include <QMainWindow>
 #include "ui_commandtheme.h"
@@ -22,3 +23,5 @@ private:
 	Ui::CommandThemeClass ui;
 
 };
+
+#endif

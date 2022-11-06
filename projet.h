@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PROJET_H
+#define PROJET_H
 
 #include <QWidget>
 #include <QtGui>
@@ -77,3 +78,5 @@ public slots:
 	void ajouter_listWidgetItem(QString, int);
 
 };
+
+#endif
