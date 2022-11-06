@@ -2,6 +2,9 @@
 #define DASHBOARD_H
 
 #include <QWidget>
+#include <QPieSeries>
+#include <QChart>
+#include <QChartView>
 #include "ui_dashboard.h"
 
 class Dashboard : public QWidget
@@ -11,6 +14,8 @@ class Dashboard : public QWidget
 public:
 	Dashboard(QWidget *parent = nullptr);
 	~Dashboard();
+	QChartView& createPieChart();
+	QChartView& createBarChart();
 
 private:
 	Ui::DashboardClass ui;

@@ -1,22 +1,321 @@
-<UI version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>DashboardClass</class>
- <widget class="QWidget" name="DashboardClass" >
-  <property name="objectName" >
-   <string notr="true">DashboardClass</string>
-  </property>
-  <property name="geometry" >
+ <widget class="QWidget" name="DashboardClass">
+  <property name="geometry">
    <rect>
-	<x>0</x>
-	<y>0</y>
-	<width>600</width>
-	<height>400</height>
+    <x>0</x>
+    <y>0</y>
+    <width>1151</width>
+    <height>689</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Dashboard</string>
-  </property>$centralwidget$
+  </property>
+  <property name="styleSheet">
+   <string notr="true">*{
+font: 12pt &quot;Calibri&quot;;
+background : rgba(0,0,0,0);
+}
+
+#fr_todo, #fr_doing, #fr_done, #fr_archivedTask, #fr_chartGeneral, #fr_chart_task, #fr_chart_app, #fr_chart_plugin
+{
+background-color: rgba(236, 237, 239, 1);
+border-radius:5px;
+}
+
+#la_num_project_todo, #la_num_project_doing, #la_num_project_done, #la_num_project_archived
+{
+background-color: white;
+border-radius:5px;
+font: 18pt &quot;Calibri&quot;;
+color : rgb(70,70,70);
+}
+
+/* COMBOBOX */
+
+QComboBox{
+color : rgb(70,70,70);
+background-color: white;
+border : 1px solid rgba(31,48,92,0.0);
+border-radius:5px;
+padding-left:5px;
+}
+
+QComboBox::drop-down{
+border:0px;
+}
+
+QComboBox::down-arrow{
+image: url(images/dashboard/arrow-down.png);
+width:15px;
+height:15px;
+margin-right:10px;
+margin-left:8px;
+}
+
+</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2" columnstretch="1,1,1" rowminimumheight="1,1">
+   <property name="spacing">
+    <number>20</number>
+   </property>
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="gridLayout" rowstretch="1,1" columnstretch="1,1">
+     <property name="spacing">
+      <number>20</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QFrame" name="fr_todo">
+       <property name="minimumSize">
+        <size>
+         <width>118</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0">
+        <item>
+         <widget class="QLabel" name="la_num_project_todo">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="contextMenuPolicy">
+           <enum>Qt::NoContextMenu</enum>
+          </property>
+          <property name="text">
+           <string>10</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="la_project_todo">
+          <property name="minimumSize">
+           <size>
+            <width>115</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Projects to do</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QFrame" name="fr_doing">
+       <property name="minimumSize">
+        <size>
+         <width>118</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,0">
+        <item>
+         <widget class="QLabel" name="la_num_project_doing">
+          <property name="text">
+           <string>8</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="la_project_doing">
+          <property name="minimumSize">
+           <size>
+            <width>115</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Projects on going</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QFrame" name="fr_done">
+       <property name="minimumSize">
+        <size>
+         <width>118</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,0">
+        <item>
+         <widget class="QLabel" name="la_num_project_done">
+          <property name="text">
+           <string>4</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="la_project_done">
+          <property name="minimumSize">
+           <size>
+            <width>115</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Projects done</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QFrame" name="fr_archivedTask">
+       <property name="minimumSize">
+        <size>
+         <width>118</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,0">
+        <item>
+         <widget class="QLabel" name="la_num_project_archived">
+          <property name="text">
+           <string>20</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="la_project_archived">
+          <property name="minimumSize">
+           <size>
+            <width>115</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Archived projects</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="1" colspan="2">
+    <widget class="QFrame" name="fr_chartGeneral">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_5" stretch="1">
+      <item>
+       <layout class="QGridLayout" name="gl_chart_general"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QFrame" name="fr_chart_task">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_6" stretch="1">
+      <item>
+       <layout class="QGridLayout" name="gl_chart_task"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QFrame" name="fr_chart_app">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_7" stretch="1">
+      <item>
+       <layout class="QGridLayout" name="gl_chart_app"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QFrame" name="fr_chart_plugin">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_8" stretch="1">
+      <item>
+       <layout class="QGridLayout" name="gl_chart_plugin"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
  <connections/>
-</UI>
+</ui>
