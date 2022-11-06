@@ -14,11 +14,16 @@ class Dashboard : public QWidget
 public:
 	Dashboard(QWidget *parent = nullptr);
 	~Dashboard();
-	QChartView& createPieChart();
+	QChartView& createPieChart(QString, QString);
 	QChartView& createBarChart();
+	void setChiffre(QString, QLabel&);
+	int getChiffre(QString, QString);
+	void maj_dashboard();
 
 private:
 	Ui::DashboardClass ui;
+	int max;
+
 };
 
 #endif

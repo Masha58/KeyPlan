@@ -29,7 +29,7 @@ border-radius:5px;
 {
 background-color: white;
 border-radius:5px;
-font: 18pt &quot;Calibri&quot;;
+font: 30pt &quot;Calibri&quot;;
 color : rgb(70,70,70);
 }
 
@@ -58,6 +58,18 @@ margin-left:8px;
 </string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2" columnstretch="1,1,1" rowminimumheight="1,1">
+   <property name="leftMargin">
+    <number>20</number>
+   </property>
+   <property name="topMargin">
+    <number>20</number>
+   </property>
+   <property name="rightMargin">
+    <number>20</number>
+   </property>
+   <property name="bottomMargin">
+    <number>20</number>
+   </property>
    <property name="spacing">
     <number>20</number>
    </property>
@@ -89,11 +101,17 @@ margin-left:8px;
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
           <property name="contextMenuPolicy">
            <enum>Qt::NoContextMenu</enum>
           </property>
           <property name="text">
            <string>10</string>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -139,6 +157,9 @@ margin-left:8px;
           <property name="text">
            <string>8</string>
           </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
@@ -183,6 +204,9 @@ margin-left:8px;
           <property name="text">
            <string>4</string>
           </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
@@ -226,6 +250,9 @@ margin-left:8px;
          <widget class="QLabel" name="la_num_project_archived">
           <property name="text">
            <string>20</string>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>

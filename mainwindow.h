@@ -32,7 +32,6 @@ private slots:
     void activateCommandTheme();
 };
 
-
 /*
 Couleur intéressante
 bleu : rgb(0, 188, 213); --> Software
@@ -43,5 +42,6 @@ vert foncé : 97,186,85);
 violet : rgb(192, 124, 222);
 jaune : rgb(232,210,29);
 */
+
 
 #endif

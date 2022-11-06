@@ -31,6 +31,10 @@ mainwindow::~mainwindow() = default;
 void mainwindow::change_fenetre(int index)
 {
     mainStackedlayout.setCurrentIndex(index);
+    if (index)
+    {
+        dashboard.maj_dashboard();
+    }
 }
 
 void mainwindow::activateCommandTheme()

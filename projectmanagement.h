@@ -18,6 +18,7 @@
 #include "containerProjet.h"
 #include "menuselector.h"
 
+
 class ProjectManagement : public QWidget
 {
 	Q_OBJECT
@@ -26,7 +27,7 @@ public:
 	ProjectManagement(QWidget *parent = nullptr);
 	~ProjectManagement();
 	void maj_bdd();
-	void databaseConnect() const;
+	//void databaseConnect();
 	void maj_statut();
 	void creationProjet(Projet&, QVBoxLayout&);
 	void creationJobs(Projet&);
@@ -36,7 +37,7 @@ public:
 
 private:
 	int compteur = 1;
-	QSqlDatabase m_db;
+	//QSqlDatabase m_db;
 	Ui::ProjectManagementClass ui;
 	std::vector<Projet*> tab_projets;
 

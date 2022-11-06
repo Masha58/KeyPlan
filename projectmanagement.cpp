@@ -28,7 +28,7 @@ ProjectManagement::ProjectManagement(QWidget *parent)
 
 ProjectManagement::~ProjectManagement()
 {
-	m_db.close();
+	//m_db.close();
 	std::for_each(tab_projets.begin(), tab_projets.end(), second_deleter());
 }
 
@@ -145,16 +145,7 @@ void ProjectManagement::afficher_details(QString nom_projet)
 	}
 }
 
-void ProjectManagement::databaseConnect() const
-{
-	QSqlDatabase m_db = QSqlDatabase::addDatabase("QSQLITE");
-	m_db.setDatabaseName("bdd/bdd");
 
-	if (!m_db.open())
-		qDebug() << "Error: connection with database failed";
-	else
-		qDebug() << "Database: connection ok";
-}
 
 QVBoxLayout& ProjectManagement::returnLayoutFromProjet(Projet &projet)
 {
@@ -165,6 +156,18 @@ QVBoxLayout& ProjectManagement::returnLayoutFromProjet(Projet &projet)
 	else
 		return containerprojet_done.vboxLayout;
 }
+
+void databaseConnect()
+{
+	QSqlDatabase m_db = QSqlDatabase::addDatabase("QSQLITE");
+	m_db.setDatabaseName("bdd/bdd");
+
+	if (!m_db.open())
+		qDebug() << "Error: connection with database failed";
+	else
+		qDebug() << "Database: connection ok";
+}
+
 
 void ProjectManagement::maj_bdd()
 {

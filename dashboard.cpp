@@ -3,16 +3,54 @@
 #include <QBarSeries>
 #include <QBarCategoryAxis>
 #include <QValueAxis>
+#include <QSqlQuery>
+#include <QSqlError>
+
+void databaseConnect_dashboard()
+{
+    QSqlDatabase m_db = QSqlDatabase::addDatabase("QSQLITE");
+    m_db.setDatabaseName("bdd/bdd");
+
+    if (!m_db.open())
+        qDebug() << "Error: connection with database failed";
+    else
+        qDebug() << "Database: connection ok";
+}
 
 Dashboard::Dashboard(QWidget *parent)
-	: QWidget(parent)
+	: QWidget(parent), max(0)
 {
 	ui.setupUi(this);
+    databaseConnect_dashboard();
 
+    setChiffre("0", *ui.la_num_project_todo);
+    setChiffre("1", *ui.la_num_project_doing);
+    setChiffre("2", *ui.la_num_project_done);
+    setChiffre("3", *ui.la_num_project_archived);
 
-    ui.gl_chart_app->addWidget(&createPieChart());
-    ui.gl_chart_task->addWidget(&createPieChart());
-    ui.gl_chart_plugin->addWidget(&createPieChart());
+    ui.gl_chart_app->addWidget(&createPieChart("Apps Summary", "Application"));
+    ui.gl_chart_task->addWidget(&createPieChart("Tasks Summary", "Task"));
+    ui.gl_chart_plugin->addWidget(&createPieChart("Plugins Summary", "Plugin"));
+    ui.gl_chart_general->addWidget(&createBarChart());
+}
+
+void Dashboard::maj_dashboard()
+{
+    max = 0;
+
+    ui.gl_chart_app->removeItem(ui.gl_chart_app->itemAt(0));
+    ui.gl_chart_task->removeItem(ui.gl_chart_task->itemAt(0));
+    ui.gl_chart_plugin->removeItem(ui.gl_chart_plugin->itemAt(0));
+    ui.gl_chart_general->removeItem(ui.gl_chart_general->itemAt(0));
+
+    setChiffre("0", *ui.la_num_project_todo);
+    setChiffre("1", *ui.la_num_project_doing);
+    setChiffre("2", *ui.la_num_project_done);
+    setChiffre("3", *ui.la_num_project_archived);
+
+    ui.gl_chart_app->addWidget(&createPieChart("Apps Summary", "Application"));
+    ui.gl_chart_task->addWidget(&createPieChart("Tasks Summary", "Task"));
+    ui.gl_chart_plugin->addWidget(&createPieChart("Plugins Summary", "Plugin"));
     ui.gl_chart_general->addWidget(&createBarChart());
 }
 
@@ -20,91 +58,93 @@ Dashboard::~Dashboard() = default;
 
 QChartView& Dashboard::createBarChart()
 {
-    QBarSet* set0 = new QBarSet("Jane");
-    QBarSet* set1 = new QBarSet("John");
-    QBarSet* set2 = new QBarSet("Axel");
-    QBarSet* set3 = new QBarSet("Mary");
-    QBarSet* set4 = new QBarSet("Samantha");
+    QBarSet* set0 = new QBarSet("Application");
+    QBarSet* set1 = new QBarSet("Plugin");
+    QBarSet* set2 = new QBarSet("Task");
 
-    *set0 << 1 << 2 << 3 << 4 << 5 << 6;
-    *set1 << 5 << 0 << 0 << 4 << 0 << 7;
-    *set2 << 3 << 5 << 8 << 13 << 8 << 5;
-    *set3 << 5 << 6 << 7 << 3 << 4 << 5;
-    *set4 << 9 << 7 << 5 << 3 << 1 << 2;
-    //![1]
+    *set0 << getChiffre("0", "Application") << getChiffre("1", "Application") << getChiffre("2", "Application");
+    *set1 << getChiffre("0", "Plugin") << getChiffre("1", "Plugin") << getChiffre("2", "Plugin");
+    *set2 << getChiffre("0", "Task") << getChiffre("1", "Task") << getChiffre("2", "Task");
 
-    //![2]
     QBarSeries* series = new QBarSeries();
     series->append(set0);
     series->append(set1);
     series->append(set2);
-    series->append(set3);
-    series->append(set4);
 
-    //![2]
-
-    //![3]
     QChart* chart = new QChart();
     chart->addSeries(series);
-    chart->setTitle("Simple barchart example");
+    chart->setTitle("Summary of projects");
     chart->setAnimationOptions(QChart::SeriesAnimations);
-    //![3]
 
-    //![4]
     QStringList categories;
-    categories << "Jan" << "Feb" << "Mar" << "Apr" << "May" << "Jun";
+    categories << "To Do" << "Doing" << "To do";
     QBarCategoryAxis* axisX = new QBarCategoryAxis();
     axisX->append(categories);
     chart->addAxis(axisX, Qt::AlignBottom);
     series->attachAxis(axisX);
 
     QValueAxis* axisY = new QValueAxis();
-    axisY->setRange(0, 15);
+    axisY->setRange(0, max);
     chart->addAxis(axisY, Qt::AlignLeft);
     series->attachAxis(axisY);
-    //![4]
 
-    //![5]
     chart->legend()->setVisible(true);
     chart->legend()->setAlignment(Qt::AlignBottom);
-    //![5]
 
-    //![6]
     QChartView* chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
     return *chartView;
 }
 
 
-QChartView& Dashboard::createPieChart()
+QChartView& Dashboard::createPieChart(QString titre, QString typeProject)
 {
     QPieSeries* series = new QPieSeries();
-    series->append("Jane", 1);
-    series->append("Joe", 2);
-    series->append("Andy", 3);
-    series->append("Barbara", 4);
-    series->append("Axel", 5);
-    //![1]
+    series->append("To Do", getChiffre("0", typeProject));
+    series->append("Doing", getChiffre("1", typeProject));
+    series->append("Done", getChiffre("2", typeProject));
 
-    //![2]
-    QPieSlice* slice = series->slices().at(1);
-    slice->setExploded();
-    slice->setLabelVisible();
-    slice->setPen(QPen(Qt::darkGreen, 2));
-    slice->setBrush(Qt::green);
-    //![2]
-
-    //![3]
     QChart* chart = new QChart();
     chart->addSeries(series);
-    chart->setTitle("Simple piechart example");
+    chart->setTitle(titre);
     chart->legend()->setVisible(true);
-    //![3]
+    chart->setAnimationOptions(QChart::SeriesAnimations);
 
-    //![4]
     QChartView* chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
     return *chartView;
 }
 
 
+void Dashboard::setChiffre(QString statut, QLabel& label)
+{
+    QSqlQuery query;
+    query.prepare("SELECT COUNT(*) FROM PROJETS WHERE statut = :stat");
+    query.bindValue(":stat", statut);
+
+    if (!query.exec())
+        qWarning() << "Error setChiffre : " << query.lastError().text();
+
+    while (query.next())
+        label.setText(query.value(0).toString());
+}
+
+int Dashboard::getChiffre(QString statut, QString typeProjet)
+{
+    int result = 0;
+    QSqlQuery query;
+    query.prepare("SELECT COUNT(*) FROM PROJETS WHERE statut = :stat AND type_projet = :type");
+    query.bindValue(":stat", statut);
+    query.bindValue(":type", typeProjet);
+
+    if (!query.exec())
+        qWarning() << "Error getChiffre : " << query.lastError().text();
+
+    while (query.next())
+        result = query.value(0).toInt();
+
+    if (result > max)
+        max = result;
+
+    return result;
+}
